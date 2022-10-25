@@ -35,34 +35,70 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image2"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Register</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="registered" method="POST">
+                                        @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
+                                            <input type="text" class="form-control "
                                                 name="firstName" placeholder="First Name">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
+                                            <input type="text" class="form-control "
                                                 name="lastName" placeholder="Last Name">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
+                                            <select name="qualification" class="form-select form-select form-control" aria-label=".form-select example">
+                                                <option selected>Select Your Practise Area</option>
+                                                <option value="Family">Family law</option>
+                                                <option value="Civil">Civil Law</option>
+                                                <option value="Business">Business Law</option>
+                                                <option value="Criminal">Criminal Law</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select name="state" class="form-select form-select form-control" aria-label=".form-select example">
+                                                <option selected>Select State</option>
+                                                <option value="Sindh">Sindh</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Balochistan">Balochistan</option>
+                                                <option value="KPK">Khyber Pakhtunkhwa</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select name="city" class="form-select form-select form-control" aria-label=".form-select example">
+                                                <option selected>Select State</option>
+                                                <option value="Sindh">Sindh</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Balochistan">Balochistan</option>
+                                                <option value="KPK">Khyber Pakhtunkhwa</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control "
+                                                name="address" placeholder="Enter Address">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea type="text" class="form-control "
+                                                name="description" placeholder="About You"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control "
                                                 name="email" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" class="form-control "
                                                 name="password" placeholder="Password">
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Register
-                                        </a>
                                         <hr>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Register
+                                        </button>
                                     </form>
                                 </div>
                             </div>

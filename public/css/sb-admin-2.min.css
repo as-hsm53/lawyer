@@ -12106,6 +12106,11 @@ a:focus {
     background-position: center;
     background-size: cover
 }
+.bg-login-image2 {
+    background: url(https://images.unsplash.com/photo-1589307904488-7d60ff29c975?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80);
+    background-position: center;
+    background-size: cover
+}
 
 .bg-register-image {
     background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
