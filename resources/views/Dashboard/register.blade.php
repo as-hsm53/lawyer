@@ -44,12 +44,16 @@
                                     <form class="user" action="registered" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control "
-                                                name="firstName" placeholder="Enter First Name...">
+                                            <input type="text" class="form-control" name="firstName" placeholder="Enter First Name...">
+                                            @if ($errors->has('firstName'))
+                                                <span class="text-danger">{{ $errors->first('firstName') }}</span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control "
-                                                name="lastName" placeholder="Enter Last Name...">
+                                            <input type="text" class="form-control" name="lastName" placeholder="Enter Last Name...">
+                                            @if ($errors->has('lastName'))
+                                                <span class="text-danger">{{ $errors->first('lastName') }}</span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <select name="qualification" class="form-select form-select form-control" aria-label=".form-select example">
@@ -59,6 +63,9 @@
                                                 <option value="Business">Business Law</option>
                                                 <option value="Criminal">Criminal Law</option>
                                             </select>
+                                            @if ($errors->has('qualification'))
+                                                <span class="text-danger">{{ $errors->first('qualification') }}</span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <select name="cityId" class="form-select form-select form-control" aria-label=".form-select example">
@@ -67,23 +74,33 @@
                                                 <option value="{{$c->id}}">{{$c->city}}</option>
                                                 @endforeach
                                             </select>
+                                            @if ($errors->has('cityId'))
+                                                <span class="text-danger">{{ $errors->first('cityId') }}</span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control "
-                                                name="address" placeholder="Enter Area Address...">
+                                            <input type="text" class="form-control" name="address" placeholder="Enter Area Address...">
+                                            @if ($errors->has('address'))
+                                                <span class="text-danger">{{ $errors->first('address') }}</span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            <textarea type="text" class="form-control "
-                                                name="description" placeholder="About You"></textarea>
+                                            <textarea type="text" class="form-control" name="description" placeholder="About You"></textarea>
+                                            @if ($errors->has('description'))
+                                                <span class="text-danger">{{ $errors->first('description') }}</span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control "
-                                                name="email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control" name="email" placeholder="Enter Email Address...">
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control "
-                                                name="password" placeholder="Enter Password">
+                                            <input type="password" class="form-control "name="password" placeholder="Enter Password">
+                                            @if ($errors->has('password'))
+                                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                            @endif
                                         </div>
                                         <hr>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">

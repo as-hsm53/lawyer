@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\cities;
 use App\Models\lawyer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LawyerController extends Controller
 {
@@ -13,9 +15,9 @@ class LawyerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function view()
     {
-        //
+        return view('Dashboard.login');
     }
 
     /**
@@ -36,21 +38,53 @@ class LawyerController extends Controller
      */
     public function store(Request $r)
     {
-        $lawyer = new lawyer();
-        $lawyer->firstName = $r->firstName;
-        $lawyer->lastName = $r->lastName;
-        $lawyer->qualification = $r->qualification;
-        $lawyer->cityId = $r->cityId;
-        $lawyer->address = $r->address;
-        $lawyer->description = $r->description;
-        $lawyer->email = $r->email;
-        $lawyer->password = $r->password;
-
-        $lawyer->save();
-
-        return view('Dashboard.login')->with("message","Successfully Registered");
+        $validate = Validator::make($r->all(),[
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|email|unique:lawyers,email',
+            'password' => 'required|min:8',
+            'qualification' => 'required',
+            'cityId' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+        ]);
+        if($validate->fails()){
+            return back()->withInput()->withErrors($validate);
+        }
+        else{
+            $lawyer = new lawyer();
+            $lawyer->firstName = $r->firstName;
+            $lawyer->lastName = $r->lastName;
+            $lawyer->qualification = $r->qualification;
+            $lawyer->cityId = $r->cityId;
+            $lawyer->address = $r->address;
+            $lawyer->description = $r->description;
+            $lawyer->email = $r->email;
+            $lawyer->password = $r->password;
+    
+            $lawyer->save();
+    
+            return redirect('login')->with("message","Successfully Registered");
+        }
     }
-
+    
+    public function login(Request $r){
+        $validate = Validator::make($r->all(),[
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        if($validate->fails()){
+            return back()->withInput()->withErrors($validate);
+        }
+        else{
+            if(Auth::attempt($r->only(['email','password']))){
+                return view('Dashboard.Lawyer.home')->with('message', 'You Have Been Successfully Logged In!');
+            }
+            else{
+                return back()->withErrors("Invalid Credentials");
+            }
+        }
+    }
     /**
      * Display the specified resource.
      *

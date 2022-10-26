@@ -18,10 +18,10 @@ Route::get('/', function () {
     return view('Dashboard.layout');
 });
 
-Route::get('/login', function(){
-    return view('Dashboard.login');
-});
+Route::get('login', [LawyerController::class, "view"]);
 
 Route::get('/register', [LawyerController::class, "show"]);
 
 Route::post('registered', [LawyerController::class, "store"]);
+
+Route::post('login', [LawyerController::class, "login"]);
