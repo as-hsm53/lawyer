@@ -13,6 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
+        // Schema::create('lawyers', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
+
         Schema::create('lawyers', function (Blueprint $table) {
             $table->id('lawyerId');
             $table->string('firstName');
@@ -20,10 +25,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('qualification');
-            $table->longText('description');
-            $table->string('state');
-            $table->string('city');
+            $table->string('description');
             $table->string('address');
+            $table->bigInteger('cityId');
             $table->timestamps();
         });
     }

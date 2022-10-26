@@ -45,11 +45,11 @@
                                         @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control "
-                                                name="firstName" placeholder="First Name">
+                                                name="firstName" placeholder="Enter First Name...">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control "
-                                                name="lastName" placeholder="Last Name">
+                                                name="lastName" placeholder="Enter Last Name...">
                                         </div>
                                         <div class="form-group">
                                             <select name="qualification" class="form-select form-select form-control" aria-label=".form-select example">
@@ -61,26 +61,16 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <select name="state" class="form-select form-select form-control" aria-label=".form-select example">
-                                                <option selected>Select State</option>
-                                                <option value="Sindh">Sindh</option>
-                                                <option value="Punjab">Punjab</option>
-                                                <option value="Balochistan">Balochistan</option>
-                                                <option value="KPK">Khyber Pakhtunkhwa</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <select name="city" class="form-select form-select form-control" aria-label=".form-select example">
-                                                <option selected>Select State</option>
-                                                <option value="Sindh">Sindh</option>
-                                                <option value="Punjab">Punjab</option>
-                                                <option value="Balochistan">Balochistan</option>
-                                                <option value="KPK">Khyber Pakhtunkhwa</option>
+                                            <select name="cityId" class="form-select form-select form-control" aria-label=".form-select example">
+                                                <option selected>Select City</option>
+                                                @foreach($cities as $c)
+                                                <option value="{{$c->id}}">{{$c->city}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control "
-                                                name="address" placeholder="Enter Address">
+                                                name="address" placeholder="Enter Area Address...">
                                         </div>
                                         <div class="form-group">
                                             <textarea type="text" class="form-control "
@@ -93,7 +83,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control "
-                                                name="password" placeholder="Password">
+                                                name="password" placeholder="Enter Password">
                                         </div>
                                         <hr>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -121,6 +111,15 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script>
+        async function fetchText(){
+            let url = 'https://ipinfo.io/json?token=6f257d515ee9fc';
+            let response = await fetch(url);
+            let data =  await response.json();
+            console.log(data);
+        }
+        fetchText();
+    </script>
 
 </body>
 

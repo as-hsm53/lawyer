@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\cities;
-use App\Models\lawyer;
 use Illuminate\Http\Request;
 
-class LawyerController extends Controller
+class CitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,43 +33,29 @@ class LawyerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
-        $lawyer = new lawyer();
-        $lawyer->firstName = $r->firstName;
-        $lawyer->lastName = $r->lastName;
-        $lawyer->qualification = $r->qualification;
-        $lawyer->cityId = $r->cityId;
-        $lawyer->address = $r->address;
-        $lawyer->description = $r->description;
-        $lawyer->email = $r->email;
-        $lawyer->password = $r->password;
-
-        $lawyer->save();
-
-        return view('Dashboard.login')->with("message","Successfully Registered");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\lawyer  $lawyer
+     * @param  \App\Models\cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(cities $cities)
     {
-        $cities = cities::all();
-
-        return view('Dashboard.register', compact('cities'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\lawyer  $lawyer
+     * @param  \App\Models\cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function edit(lawyer $lawyer)
+    public function edit(cities $cities)
     {
         //
     }
@@ -79,10 +64,10 @@ class LawyerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\lawyer  $lawyer
+     * @param  \App\Models\cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, lawyer $lawyer)
+    public function update(Request $request, cities $cities)
     {
         //
     }
@@ -90,10 +75,10 @@ class LawyerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\lawyer  $lawyer
+     * @param  \App\Models\cities  $cities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(lawyer $lawyer)
+    public function destroy(cities $cities)
     {
         //
     }

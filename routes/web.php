@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LawyerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,6 @@ Route::get('/login', function(){
     return view('Dashboard.login');
 });
 
-Route::get('/register', function(){
-    return view('Dashboard.register');
-});
+Route::get('/register', [LawyerController::class, "show"]);
+
+Route::post('registered', [LawyerController::class, "store"]);
