@@ -44,62 +44,62 @@
                                     <form class="user" action="registered" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="firstName" placeholder="Enter First Name...">
+                                            <input type="text" class="form-control" name="firstName" value="{{ old('firstName') }}" placeholder="Enter First Name...">
                                             @if ($errors->has('firstName'))
-                                                <span class="text-danger">{{ $errors->first('firstName') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('firstName') }}</b></span>
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="lastName" placeholder="Enter Last Name...">
+                                            <input type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" placeholder="Enter Last Name...">
                                             @if ($errors->has('lastName'))
-                                                <span class="text-danger">{{ $errors->first('lastName') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('lastName') }}</b></span>
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <select name="qualification" class="form-select form-select form-control" aria-label=".form-select example">
-                                                <option selected>Select Your Practise Area</option>
+                                            <select name="qualification"  class="form-select form-select form-control" aria-label=".form-select example">
+                                                <option value="0" selected>Select Your Practise Area</option>
                                                 <option value="Family">Family law</option>
                                                 <option value="Civil">Civil Law</option>
                                                 <option value="Business">Business Law</option>
                                                 <option value="Criminal">Criminal Law</option>
                                             </select>
                                             @if ($errors->has('qualification'))
-                                                <span class="text-danger">{{ $errors->first('qualification') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('qualification') }}</b></span>
                                             @endif
                                         </div>
                                         <div class="form-group">
                                             <select name="cityId" class="form-select form-select form-control" aria-label=".form-select example">
-                                                <option selected>Select City</option>
+                                                <option value="0" selected>Select City</option>
                                                 @foreach($cities as $c)
                                                 <option value="{{$c->id}}">{{$c->city}}</option>
                                                 @endforeach
                                             </select>
                                             @if ($errors->has('cityId'))
-                                                <span class="text-danger">{{ $errors->first('cityId') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('cityId') }}</b></span>
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="address" placeholder="Enter Area Address...">
+                                            <input type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="Enter Area Address...">
                                             @if ($errors->has('address'))
-                                                <span class="text-danger">{{ $errors->first('address') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('address') }}</b></span>
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <textarea type="text" class="form-control" name="description" placeholder="About You"></textarea>
+                                            <textarea type="text" class="form-control" name="description" placeholder="About You">{{ old('description') }}</textarea>
                                             @if ($errors->has('description'))
-                                                <span class="text-danger">{{ $errors->first('description') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('description') }}</b></span>
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="email" placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter Email Address...">
                                             @if ($errors->has('email'))
-                                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('email') }}</b></span>
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control "name="password" placeholder="Enter Password">
+                                            <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Enter Password">
                                             @if ($errors->has('password'))
-                                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                                <span class="text-danger"><b>{{ $errors->first('password') }}</b></span>
                                             @endif
                                         </div>
                                         <hr>

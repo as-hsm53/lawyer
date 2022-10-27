@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\cities;
 use App\Models\lawyer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class LawyerController extends Controller
@@ -25,9 +24,9 @@ class LawyerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
-        //
+        return view('Dashboard.Lawyer.home');
     }
 
     /**
@@ -43,8 +42,8 @@ class LawyerController extends Controller
             'lastName' => 'required',
             'email' => 'required|email|unique:lawyers,email',
             'password' => 'required|min:8',
-            'qualification' => 'required',
-            'cityId' => 'required',
+            'qualification' => 'required|not_in:0',
+            'cityId' => 'required|not_in:0',
             'address' => 'required',
             'description' => 'required',
         ]);
@@ -64,24 +63,34 @@ class LawyerController extends Controller
     
             $lawyer->save();
     
-            return redirect('login')->with("message","Successfully Registered");
+            return redirect('login')->with("message","Successfully Registered! Please Enter Your Credenials To Login");
         }
     }
     
     public function login(Request $r){
+        
         $validate = Validator::make($r->all(),[
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
         ]);
         if($validate->fails()){
             return back()->withInput()->withErrors($validate);
         }
         else{
-            if(Auth::attempt($r->only(['email','password']))){
-                return view('Dashboard.Lawyer.home')->with('message', 'You Have Been Successfully Logged In!');
+
+            $email = $r->post('email');
+            $password = $r->post('password');
+    
+            $result = lawyer::where(['email' => $email, 'password' => $password])->get();
+            
+            if(isset($result['1']->id)){
+                $r->session()->put('LAWYER_LOGIN', true);
+                $r->session()->put('LAWYER_ID', $result['0']->id);
+    
+                return redirect('/');
             }
             else{
-                return back()->withErrors("Invalid Credentials");
+                return redirect('login')->with('error','Invalid Credentials');
             }
         }
     }

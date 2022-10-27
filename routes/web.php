@@ -24,4 +24,6 @@ Route::get('/register', [LawyerController::class, "show"]);
 
 Route::post('registered', [LawyerController::class, "store"]);
 
-Route::post('login', [LawyerController::class, "login"]);
+Route::post('auth', [LawyerController::class, "login"]);
+
+Route::get('LoggedIn',[LawyerController::class, "index"]);
