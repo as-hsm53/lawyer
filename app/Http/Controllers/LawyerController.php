@@ -70,24 +70,28 @@ class LawyerController extends Controller
     public function login(Request $r){
         
         $validate = Validator::make($r->all(),[
-            'email' => 'required|email',
-            'password' => 'required|min:8',
+            'email' => 'required',
+            'password' => 'required',
         ]);
+        
         if($validate->fails()){
-            return back()->withInput()->withErrors($validate);
+            return redirect('login')->withInput()->withErrors($validate);
+            
         }
-        else{
-
+        else {
+            
+            
             $email = $r->post('email');
             $password = $r->post('password');
     
             $result = lawyer::where(['email' => $email, 'password' => $password])->get();
-            
-            if(isset($result['1']->id)){
+            // echo $result;
+            if(isset($result['0']->id)){
+                
                 $r->session()->put('LAWYER_LOGIN', true);
                 $r->session()->put('LAWYER_ID', $result['0']->id);
     
-                return redirect('/');
+                return redirect('/')->with('message','Logged In Successfully!');
             }
             else{
                 return redirect('login')->with('error','Invalid Credentials');

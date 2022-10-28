@@ -15,12 +15,12 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'lawyer',
+        'passwords' => 'users',
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Guards
+    | Authentication Guardsz
     |--------------------------------------------------------------------------
     |
     | Next, you may define every authentication guard for your application.

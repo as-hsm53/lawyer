@@ -19,7 +19,7 @@ return new class extends Migration
         // });
 
         Schema::create('lawyers', function (Blueprint $table) {
-            $table->id('lawyerId');
+            $table->id();
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email');
