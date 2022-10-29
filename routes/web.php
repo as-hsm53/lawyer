@@ -18,7 +18,6 @@ Route::get('/', function () {
     return view('Dashboard.layout');
 });
 
-Route::get('login', [LawyerController::class, "view"]);
 
 Route::get('/register', [LawyerController::class, "show"]);
 
@@ -28,4 +27,10 @@ Route::post('auth', [LawyerController::class, "login"]);
 
 Route::get('LoggedIn',[LawyerController::class, "index"]);
 
-Route::get('Dashboard', [LawyerController::class, "Dashboard"] );
+Route::get('login', [LawyerController::class, "view"]);
+
+Route::group(['middleware'=>'lawyer'], function(){
+    
+    Route::get('Dashboard', [LawyerController::class, "Dashboard"] );
+
+});
