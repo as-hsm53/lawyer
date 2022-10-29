@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cities;
 use App\Models\lawyer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class LawyerController extends Controller
@@ -143,8 +144,10 @@ class LawyerController extends Controller
      * @param  \App\Models\lawyer  $lawyer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(lawyer $lawyer)
+    public function logout()
     {
-        //
+        Session::flush();
+
+        return redirect('login')->with('message', "You've Logged Out Succesfully");
     }
 }

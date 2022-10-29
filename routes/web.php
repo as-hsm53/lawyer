@@ -29,8 +29,9 @@ Route::get('LoggedIn',[LawyerController::class, "index"]);
 
 Route::get('login', [LawyerController::class, "view"]);
 
+
 Route::group(['middleware'=>'lawyer'], function(){
     
     Route::get('Dashboard', [LawyerController::class, "Dashboard"] );
-
+    Route::get('logout', [LawyerController::class, "logout"]);
 });
