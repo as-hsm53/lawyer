@@ -1,6 +1,1 @@
-@extends('Dashboard.layout')
-
-
-@section('lawyerDashboard')
-
-@endsection
+@include('Dashboard.Lawyer.layout')

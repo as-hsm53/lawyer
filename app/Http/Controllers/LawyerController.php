@@ -19,6 +19,9 @@ class LawyerController extends Controller
         return view('Dashboard.login');
     }
 
+    public function Dashboard(){
+        return view('Dashboard.Lawyer.home');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -70,7 +73,7 @@ class LawyerController extends Controller
     public function login(Request $r){
         
         $validate = Validator::make($r->all(),[
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
         
@@ -91,7 +94,7 @@ class LawyerController extends Controller
                 $r->session()->put('LAWYER_LOGIN', true);
                 $r->session()->put('LAWYER_ID', $result['0']->id);
     
-                return redirect('/')->with('message','Logged In Successfully!');
+                return redirect('Dashboard')->with('message','Logged In Successfully!');
             }
             else{
                 return redirect('login')->with('error','Invalid Credentials');

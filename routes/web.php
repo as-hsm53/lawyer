@@ -27,3 +27,5 @@ Route::post('registered', [LawyerController::class, "store"]);
 Route::post('auth', [LawyerController::class, "login"]);
 
 Route::get('LoggedIn',[LawyerController::class, "index"]);
+
+Route::get('Dashboard', [LawyerController::class, "Dashboard"] );
