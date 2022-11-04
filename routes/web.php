@@ -29,7 +29,25 @@ Route::get('LoggedIn',[LawyerController::class, "index"]);
 
 Route::get('login', [LawyerController::class, "view"]);
 
+Route::get('/main', function () {
+    return view('home.main');
+});
 
+Route::get('/index', function () {
+    return view('home.index');
+});
+
+Route::get('/portfolio', function () {
+    return view('lawyers.portfolio');
+});
+
+Route::get('/mail', function () {
+    return view('contact.mail');
+});
+
+Route::get('/aboutUs', function () {
+    return view('home.aboutUs');
+});
 Route::group(['middleware'=>'lawyer'], function(){
     
     Route::get('Dashboard', [LawyerController::class, "Dashboard"] );

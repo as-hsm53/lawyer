@@ -1,5 +1,60 @@
-@include('Dashboard.Lawyer.layout')
-
+@extends('Dashboard.Lawyer.layout')
+@section('session')
+@foreach($result as $r)
+{{$r->email}}
+@endforeach
+@endsection
 @section('lawyer')
-
+@if(session()->has('success'))
+<div class="col-lg-12">
+    <div class=" alert alert-success">{{session("success")}}</div>
+</div>
+@endif
+<h1 class="text-primary">Edit Profile</h1>
+<row>
+    @foreach($result as $r)
+    <div class="col-md-12">
+        <form class="row">
+          <div class="mb-3 col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" name="firstName" value="{{$r->firstName}}" class="form-control" id="firstName">
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" name="lastName" value="{{$r->lastName}}" class="form-control" id="lastName">
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" name="email" value="{{$r->email}}" class="form-control" id="email" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="qualification" class="form-label">Qualification</label>
+            <input type="text" name="qualification" value="{{$r->qualification}}" class="form-control" id="qualification" disabled>
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" name="address" value="{{$r->address}}" class="form-control" id="address">
+          </div>
+          <div class="mb-3 col-md-6">
+          <label for="cityId" class="form-label">City</label>
+          <select name="cityId" class="form-select form-select form-control" id="cityId" disabled>
+            <option value="{{$r->cityId}}" selected>{{$r->city}}</option>
+            @foreach($cities as $c)
+            <option value="{{$c->id}}">{{$c->city}}</option>
+            @endforeach
+            </select>
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control" id="description">{{$r->description}}</textarea>
+          </div>
+          
+          <div class="col-md-6 mt-5">
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+          </div>
+        </form>
+    @endforeach
+    </div>
+    
+</row>
 @endsection

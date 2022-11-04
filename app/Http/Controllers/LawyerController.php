@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cities;
 use App\Models\lawyer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -20,8 +21,26 @@ class LawyerController extends Controller
         return view('Dashboard.login');
     }
 
-    public function Dashboard(){
-        return view('Dashboard.Lawyer.home');
+    public function Dashboard(Request $r){
+
+        // $lawyer = lawyer::all();
+        // $session_id = Session::getId();
+        // $result = DB::table('lawyers')->where("id" ,"=", $r->get('lawyer'))->get();
+        // echo $result;
+        $cities = cities::all();
+        if($r->session()->has('LAWYER_ID')){
+            
+            // $result = DB::table('lawyers')->where("id" ,"=",$r->session()->get('LAWYER_ID'))->get();
+            $result = DB::table('lawyers')
+            ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+            ->select('lawyers.*', 'cities.city')
+            ->where("lawyers.id" ,"=",$r->session()->get('LAWYER_ID'))->get();
+            return view('Dashboard.Lawyer.home', compact('result','cities'));
+        }
+        else{
+            return redirect()->back()->with('error',"Sheeesh");
+        }
+
     }
     /**
      * Show the form for creating a new resource.
@@ -33,6 +52,9 @@ class LawyerController extends Controller
         return view('Dashboard.Lawyer.home');
     }
 
+    public function home(){
+        return view('home.index');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -94,8 +116,9 @@ class LawyerController extends Controller
                 
                 $r->session()->put('LAWYER_LOGIN', true);
                 $r->session()->put('LAWYER_ID', $result['0']->id);
-    
-                return redirect('Dashboard')->with('message','Logged In Successfully!');
+                
+                session()->flash('success', "You've Been Logged In Successfully!");
+                return redirect('Dashboard');
             }
             else{
                 return redirect('login')->with('error','Invalid Credentials');

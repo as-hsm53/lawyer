@@ -331,7 +331,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @if(Session::has("LAWYER_LOGIN"))
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@yield('session')</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                                 @endif
                             </a>
@@ -365,7 +365,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+                    @yield('lawyer')
 
                 </div>
                 <!-- /.container-fluid -->
