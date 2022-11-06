@@ -156,9 +156,21 @@ class LawyerController extends Controller
      * @param  \App\Models\lawyer  $lawyer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, lawyer $lawyer)
+    public function update(Request $r, lawyer $lawyer)
     {
-        //
+        $lawyer = lawyer::find(1);
+        $firstName = $r->input('firstName');
+        $lastName = $r->input('lastName');
+        $email = $r->input('email');
+        $address = $r->input('address');
+        $description = $r->input('description');
+
+        $lawyer::where('id', '=', $r->session()->get('LAWYER_ID'))
+        ->update(['firstName' => $firstName,  'lastName' => $lastName, 'email' => $email,
+        'address' => $address, 'description' => $description]);
+
+        session()->flash('success', "Your Data Has Been Updated Successfully!");
+        return redirect('Dashboard');
     }
 
     /**

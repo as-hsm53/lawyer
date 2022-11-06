@@ -14,7 +14,8 @@
 <row>
     @foreach($result as $r)
     <div class="col-md-12">
-        <form class="row">
+        <form class="row" method="POST" action="updated">
+          @csrf
           <div class="mb-3 col-md-6">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" name="firstName" value="{{$r->firstName}}" class="form-control" id="firstName">

@@ -34,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="contact">
 		<div class="container">   
 			<div class="w3ls-title"> 
-				<h3 class="agileits-title">Mail Us</h3>
+				<h3 class="agileits-title">Register</h3>
 			</div>
 			<!-- map --> 
 			<div class="map">

@@ -52,4 +52,6 @@ Route::group(['middleware'=>'lawyer'], function(){
     
     Route::get('Dashboard', [LawyerController::class, "Dashboard"] );
     Route::get('logout', [LawyerController::class, "logout"]);
+    Route::post('updated', [LawyerController::class, "update"]);
+
 });
