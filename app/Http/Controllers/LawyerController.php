@@ -163,21 +163,29 @@ class LawyerController extends Controller
         $description = $r->input('description');
         
         //Upload File
+        if($r->hasFile('image')){
+            
+            $file = $r->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time().'.'.$extension;
+            $file->move('images/lawyers/', $fileName);
+            $lawyer->image = $fileName;
 
-        $file = $r->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $fileName = time().'.'.$extension;
-        $file->move('images/lawyers/', $fileName);
-        $lawyer->image = $fileName;
+            //Update Query
+            $lawyer::where('id', '=', $r->session()->get('LAWYER_ID'))
+            ->update(['firstName' => $firstName,  'lastName' => $lastName, 'email' => $email,
+            'address' => $address,'image' => $fileName, 'description' => $description]);
+        }
+        else{
+            //Update Query
+            $lawyer::where('id', '=', $r->session()->get('LAWYER_ID'))
+            ->update(['firstName' => $firstName,  'lastName' => $lastName, 'email' => $email,
+            'address' => $address, 'description' => $description]);
+        }
         
-        //Update Query
-        $lawyer::where('id', '=', $r->session()->get('LAWYER_ID'))
-        ->update(['firstName' => $firstName,  'lastName' => $lastName, 'email' => $email,
-        'address' => $address,'image' => $fileName, 'description' => $description]);
-
         session()->flash('success', "Your Data Has Been Updated Successfully!");
         return redirect('Dashboard');
-
+        
     }
 
     /**
