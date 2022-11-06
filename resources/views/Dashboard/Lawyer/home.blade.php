@@ -14,7 +14,7 @@
 <row>
     @foreach($result as $r)
     <div class="col-md-12">
-        <form class="row" method="POST" action="updated">
+        <form class="row" method="POST" action="updated" enctype="multipart/form-data">
           @csrf
           <div class="mb-3 col-md-6">
             <label for="firstName" class="form-label">First Name</label>
@@ -49,8 +49,12 @@
             <label for="description" class="form-label">Description</label>
             <textarea name="description" class="form-control" id="description">{{$r->description}}</textarea>
           </div>
+          <div class="mb-3 col-md-6">
+            <label for="image" class="form-label">Upload Image</label>
+            <input type="file" name="image" value="{{$r->extenstion}}" class="form-control" id="image">
+          </div>
           
-          <div class="col-md-6 mt-5">
+          <div class="col-md-12 mt-5">
             <button type="submit" class="btn btn-primary w-100">Submit</button>
           </div>
         </form>

@@ -20,17 +20,12 @@ class LawyerController extends Controller
     {
         return view('Dashboard.login');
     }
-
+    //Dashboard input tags function
     public function Dashboard(Request $r){
 
-        // $lawyer = lawyer::all();
-        // $session_id = Session::getId();
-        // $result = DB::table('lawyers')->where("id" ,"=", $r->get('lawyer'))->get();
-        // echo $result;
         $cities = cities::all();
         if($r->session()->has('LAWYER_ID')){
             
-            // $result = DB::table('lawyers')->where("id" ,"=",$r->session()->get('LAWYER_ID'))->get();
             $result = DB::table('lawyers')
             ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
             ->select('lawyers.*', 'cities.city')
@@ -61,6 +56,8 @@ class LawyerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // registering lawyer With input validation
     public function store(Request $r)
     {
         $validate = Validator::make($r->all(),[
@@ -164,13 +161,23 @@ class LawyerController extends Controller
         $email = $r->input('email');
         $address = $r->input('address');
         $description = $r->input('description');
+        
+        //Upload File
 
+        $file = $r->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $fileName = time().'.'.$extension;
+        $file->move('images/lawyers/', $fileName);
+        $lawyer->image = $fileName;
+        
+        //Update Query
         $lawyer::where('id', '=', $r->session()->get('LAWYER_ID'))
         ->update(['firstName' => $firstName,  'lastName' => $lastName, 'email' => $email,
-        'address' => $address, 'description' => $description]);
+        'address' => $address,'image' => $fileName, 'description' => $description]);
 
         session()->flash('success', "Your Data Has Been Updated Successfully!");
         return redirect('Dashboard');
+
     }
 
     /**
