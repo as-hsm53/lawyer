@@ -51,7 +51,7 @@
           </div>
           <div class="mb-3 col-md-6">
             <label for="image" class="form-label">Upload Image</label>
-            <input type="file" name="image" value="{{$r->extenstion}}" class="form-control" id="image">
+            <input type="file" name="image" class="form-control" id="image">
           </div>
           
           <div class="col-md-12 mt-5">
