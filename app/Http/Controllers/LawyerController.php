@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\admin;
 use App\Models\cities;
 use App\Models\lawyer;
 use Illuminate\Http\Request;
@@ -106,16 +107,26 @@ class LawyerController extends Controller
             
             $email = $r->post('email');
             $password = $r->post('password');
-    
-            $result = lawyer::where(['email' => $email, 'password' => $password])->get();
-            // echo $result;
-            if(isset($result['0']->id)){
+            // If data from lawyer table, go to lawyer dashboard
+            $lawyerUser = lawyer::where(['email' => $email, 'password' => $password])->get();
+            // If data from admin table, go to admin dashboard
+            $adminUser = admin::where(['email' => $email, 'password' => $password])->get();
+            
+            if(isset($lawyerUser['0']->id)){
                 
                 $r->session()->put('LAWYER_LOGIN', true);
-                $r->session()->put('LAWYER_ID', $result['0']->id);
+                $r->session()->put('LAWYER_ID', $lawyerUser['0']->id);
                 
                 session()->flash('success', "You've Been Logged In Successfully!");
                 return redirect('Dashboard');
+            }
+            else if(isset($adminUser['0']->id)){
+
+                $r->session()->put('ADMIN_LOGIN', true);
+                $r->session()->put('ADMIN_ID', $adminUser['0']->id);
+                
+                session()->flash('success', "You've Been Logged In Successfully!");
+                return redirect('admin/Dashboard');
             }
             else{
                 return redirect('login')->with('error','Invalid Credentials');

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cities;
+use App\Models\admin;
 use Illuminate\Http\Request;
 
-class CitiesController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function Dashboard()
     {
-        //
+        return view('Admin.dashboard');
     }
 
     /**
@@ -41,10 +41,10 @@ class CitiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\cities  $cities
+     * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(cities $cities)
+    public function show(admin $admin)
     {
         //
     }
@@ -52,10 +52,10 @@ class CitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\cities  $cities
+     * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(cities $cities)
+    public function edit(admin $admin)
     {
         //
     }
@@ -64,10 +64,10 @@ class CitiesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\cities  $cities
+     * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cities $cities)
+    public function update(Request $request, admin $admin)
     {
         //
     }
@@ -75,10 +75,10 @@ class CitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\cities  $cities
+     * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cities $cities)
+    public function destroy(admin $admin)
     {
         //
     }

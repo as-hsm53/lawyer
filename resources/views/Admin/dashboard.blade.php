@@ -1,0 +1,1 @@
+@extends('Dashboard.Lawyer.layout')

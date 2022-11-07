@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LawyerController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,9 @@ Route::get('/mail', function () {
 Route::get('/aboutUs', function () {
     return view('home.aboutUs');
 });
+
+Route::get('admin/Dashboard', [AdminController::class, "Dashboard"] );
+
 Route::group(['middleware'=>'lawyer'], function(){
     
     Route::get('Dashboard', [LawyerController::class, "Dashboard"] );
