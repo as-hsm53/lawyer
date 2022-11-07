@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\lawyer;
 use App\Models\admin;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class AdminController extends Controller
      */
     public function Dashboard()
     {
-        return view('Admin.dashboard');
+        $lawyers = lawyer::all();
+
+        return view('Admin.dashboard', compact('lawyers'));
     }
 
     /**
@@ -22,7 +25,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function layers()
     {
         //
     }

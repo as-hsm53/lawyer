@@ -19,6 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles Admin Lawyer Table -->
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -330,7 +332,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if(Session::has("LAWYER_LOGIN"))
+                                @if(Session::has("LAWYER_LOGIN") || Session::has("ADMIN_LOGIN"))
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">@yield('session')</span>
                                 <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
                                 @endif
@@ -366,7 +368,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     @yield('lawyer')
-
+                    @yield('lawyersTable')
                 </div>
                 <!-- /.container-fluid -->
 
@@ -426,10 +428,13 @@
 
     <!-- Page level plugins -->
     <script src="../vendor/chart.js/Chart.min.js"></script>
-
+     <!-- Lawyer Table Plugin -->
+     <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
+    <script src="../js/demo/datatables-demo.js"></script>
 
 </body>
 
