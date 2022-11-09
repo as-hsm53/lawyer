@@ -50,7 +50,16 @@ Route::get('/aboutUs', function () {
     return view('home.aboutUs');
 });
 
-Route::get('admin/Dashboard', [AdminController::class, "Dashboard"] );
+Route::group(['middleware'=>'admin'], function(){
+    
+    Route::get('admin/Dashboard', [AdminController::class, "Dashboard"] );
+    Route::Post('admin/Active', [AdminController::class, "Active"] );
+    Route::Post('admin/Deactive', [AdminController::class, "Deactive"] );
+    Route::get('admin/logout', [AdminController::class, "logout"]);
+
+    
+});
+
 
 Route::group(['middleware'=>'lawyer'], function(){
     

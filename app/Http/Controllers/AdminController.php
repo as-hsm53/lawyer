@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\lawyer;
 use App\Models\admin;
+use App\Models\lawyer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -15,9 +16,10 @@ class AdminController extends Controller
      */
     public function Dashboard()
     {
+        $admins = admin::all();
         $lawyers = lawyer::all();
 
-        return view('Admin.dashboard', compact('lawyers'));
+        return view('Admin.dashboard', compact('lawyers', 'admins'));
     }
 
     /**
@@ -25,9 +27,21 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function layers()
+    public function Active(Request $r)
     {
-        //
+        $id = $r->post('id');
+        lawyer::where(['id'=> $id])->update(['status'=>'Active']);
+        
+        session()->flash('success', "Lawyer Has Been Activated!");
+        return redirect('admin/Dashboard');
+    }
+    public function Deactive(Request $r)
+    {
+        $id = $r->post('id');
+        lawyer::where(['id'=> $id])->update(['status'=>'Deactive']);
+        
+        session()->flash('success', "Lawyer Has Been Deactivated!");
+        return redirect('admin/Dashboard');
     }
 
     /**
@@ -81,8 +95,10 @@ class AdminController extends Controller
      * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(admin $admin)
+    public function logout()
     {
-        //
+        Session::flush();
+
+        return redirect('login')->with('message', "You've Logged Out Succesfully");
     }
 }
