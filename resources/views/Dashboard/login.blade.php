@@ -73,7 +73,7 @@
 			<section class="ls ms section_padding_top_100 section_padding_bottom_100 section_full_height">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+						<div class="col-sm-6 col-sm-offset-3 col-md-6">
                             <div class="row">
                                 @if(Session::has("message"))
                                     <div class="col-lg-12">
@@ -137,17 +137,17 @@
 												</div>
 											</div>
 										</div> -->
-										<button type="submit" class="theme_button block_button color1">Login</button>
+										<button type="submit" class="theme_button block_button color1" style="margin-top: 2rem">Login</button>
 									</form>
 								</div>
 
 							</div>
 							<!-- .with_background -->
 
-							<!-- <p class="divider_20 text-center">
-								Already registered?
-								<a href="admin_signin.html">Log In</a>.
-							</p> -->
+							<p class="divider_20 text-center">
+								Don't Have An Account?
+								<a href="register">Register</a>.
+							</p>
 
 						</div>
 						<!-- .col-* -->

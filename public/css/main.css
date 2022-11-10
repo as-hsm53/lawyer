@@ -10969,7 +10969,8 @@ aside .widget_tag_cloud a:hover {
 }
 
 .wrap-forms .form-group textarea {
-	min-height: 150px;
+	min-height: 50px;
+	max-width: 100%;
 }
 
 .has-placeholder label {
