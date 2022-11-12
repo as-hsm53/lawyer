@@ -113,7 +113,7 @@
 													<label for="qualification">Qualification</label>
 													<i class="grey fa fa-graduation-cap"></i>
 													<select name="qualification"  class="form-select form-select form-control" aria-label=".form-select example">
-														<option value="0" selected>Select Your Practise Area</option>
+														<option value="0" selected>Select Your Practice Area</option>
 														<option value="Family">Family law</option>
 														<option value="Civil">Civil Law</option>
 														<option value="Business">Business Law</option>

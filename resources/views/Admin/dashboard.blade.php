@@ -1,8 +1,11 @@
 @extends('Dashboard.Lawyer.layout')
 @section('session')
 @foreach($admins as $admin)
-{{$admin->email}}
+Hussain
 @endforeach
+@section('admin')
+Super Admin
+@endsection
 @endsection
 @section('lawyersTable')
 @if(session()->has('success'))
@@ -11,13 +14,13 @@
 </div>
 @endif
 <!-- Total Lawyers -->
-<div class="card shadow mb-4">
+<div>
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Manage Lawyers</h6>
+        <h3 class="m-0 font-weight-bold text-primary">Manage Lawyers</h3>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table_template table-hover" id="dataTable">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -77,8 +80,4 @@
         </div>
     </div>
 </div>
-
-
-
-
 @endsection

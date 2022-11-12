@@ -1213,7 +1213,7 @@ input[type="radio"]:disabled + label:before {
 }
 
 /* bootstrap buttons */
-.btn {
+/* .btn {
 	padding: 22px 30px 22px;
 	margin: 0 0 4px 0;
 	font-weight: 700;
@@ -1222,7 +1222,7 @@ input[type="radio"]:disabled + label:before {
 	outline: none;
 	-webkit-transition: all 0.3s ease-in-out 0s;
 	transition: all 0.3s ease-in-out 0s;
-}
+} */
 
 .btn:hover, .btn:focus {
 	outline: none;

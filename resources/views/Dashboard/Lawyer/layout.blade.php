@@ -1,441 +1,562 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
+
+<!-- Mirrored from html.modernwebtemplates.com/justice/admin_index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Nov 2022 20:53:16 GMT -->
 <head>
+	<title>Justice</title>
+	<meta charset="utf-8">
+	<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <title>SB Admin 2 - Dashboard</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/animations.css">
+	<link rel="stylesheet" href="../css/fonts.css">
+	<link rel="stylesheet" href="../css/main.css" id="color-switcher-link">
+	<script src="../js/vendor/modernizr-2.6.2.min.js"></script>
 
-    <!-- Custom fonts for this template-->
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <!-- Custom styles Admin Lawyer Table -->
-    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+		<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+    
 </head>
 
-<body id="page-top">
+<body class="theme-dashboard">
+	<!--[if lt IE 9]>
+		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+	<![endif]-->
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">
+				<i class="rt-icon2-cross2"></i>
+			</span>
+		</button>
+		<div class="widget widget_search">
+			<form method="get" class="searchform search-form form-inline" action="https://html.modernwebtemplates.com/justice/">
+				<div class="form-group">
+					<input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+				</div>
+				<button type="submit" class="theme_button">Search</button>
+			</form>
+		</div>
+	</div>
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-solid fa-gavel"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Attorney</div>
-            </a>
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--		
+		<ul>
+			<li>Message To User</li>
+		</ul>
+		-->
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+		</div>
+	</div>
+	<!-- eof .modal -->
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="Dashboard.">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+	<!-- wrappers for visual page editor and boxed version of template -->
+	<div id="canvas">
+		<div id="box_wrapper">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+			<!-- template sections -->
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
+			<header class="page_header_side page_header_side_sticked active-slide-side-header ds">
+				<span class="toggle_menu_side toggler_light header-slide">
+					<span></span>
+				</span>
+				<div class="scrollbar-macosx">
+					<div class="side_header_inner">
+						<div class="greylinks">
+							<!-- user -->
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
+							<div class="user-menu">
+								@yield('lawyerImage')
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
+								<div class="user-menu-info">
+									<h4>@yield('session')</h4>
+									<ul class="nav menu-side-click">
+										<li class="active">
+											<a href="#">
+												@yield('admin')
+											</a>
+											<ul>
+												<li>
+													<a href="admin_profile.html">
+														<i class="fa fa-user"></i>
+														Profile
+													</a>
+												</li>
+												<li>
+													<a href="admin_profile_edit.html">
+														<i class="fa fa-edit"></i>
+														Edit Profile
+													</a>
+												</li>
+												<li>
+													<a href="admin_inbox.html">
+														<i class="fa fa-envelope-o"></i>
+														Inbox
+													</a>
+												</li>
+												<li>
+													<a href="logout">
+														<i class="fa fa-sign-out"></i>
+														Log Out
+													</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+                            
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+							<!-- main side nav start -->
+							<nav class="mainmenu_side_wrapper">
+								<h3 class="main_bg_color2">Dashboard</h3>
+								<ul class="nav menu-side-click">
+									<li class="active">
+										<a href="admin_index.html">
+											<i class="fa fa-th-large"></i>
+											Dashboard
+										</a>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
+									</li>
+								</ul>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
+								<h3 class="dark_bg_color">Pages</h3>
+								<ul class="nav menu-side-click">
+									<li>
+										<a href="#">
+											<i class="fa fa-user"></i>
+											Account
+										</a>
+										<ul>
+											<li>
+												<a href="admin_profile.html">
+													Profile
+												</a>
+											</li>
+											<li>
+												<a href="admin_profile_edit.html">
+													Edit Profile
+												</a>
+											</li>
+											<li>
+												<a href="admin_inbox.html">
+													Inbox
+												</a>
+											</li>
+											<li>
+												<a href="admin_signin.html">
+													Sign In
+												</a>
+											</li>
+											<li>
+												<a href="admin_signup.html">
+													Sign Up
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="admin_posts.html">
+											<i class="fa fa-file-text"></i>
+											Posts
+										</a>
+										<ul>
+											<li>
+												<a href="admin_posts.html">
+													Posts
+												</a>
+											</li>
+											<li>
+												<a href="admin_post.html">
+													Single Post
+												</a>
+											</li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
+										</ul>
+									</li>
+									<li>
+										<a href="admin_products.html">
+											<i class="fa fa-suitcase"></i>
+											Products
+										</a>
+										<ul>
+											<li>
+												<a href="admin_products.html">
+													Products
+												</a>
+											</li>
+											<li>
+												<a href="admin_product.html">
+													Single Product
+												</a>
+											</li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+										</ul>
+									</li>
+									<li>
+										<a href="admin_orders.html">
+											<i class="fa fa-shopping-cart"></i>
+											Orders
+										</a>
+										<ul>
+											<li>
+												<a href="admin_orders.html">
+													Orders
+												</a>
+											</li>
+											<li>
+												<a href="admin_order.html">
+													Single Order
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="admin_comments.html">
+											<i class="fa fa-comment"></i>
+											Comments
+										</a>
+										<ul>
+											<li>
+												<a href="admin_comments.html">
+													Comments
+												</a>
+											</li>
+											<li>
+												<a href="admin_comment.html">
+													Single Comment
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="admin_faq.html">
+											<i class="fa fa-support"></i>
+											FAQ
+										</a>
+									</li>
+								</ul>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+								<h3 class="dark_bg_color">UI Elements</h3>
+								<ul class="nav menu-side-click">
+									<li>
+										<a href="admin_tables.html">
+											<i class="fa fa-table"></i>
+											Tables
+										</a>
+									</li>
+									<li>
+										<a href="admin_forms.html">
+											<i class="fa fa-check-square-o"></i>
+											Forms
+										</a>
+									</li>
+									<li>
+										<a href="admin_bootstrap.html">
+											<i class="fa fa-cog"></i>
+											Bootstrap
+										</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- eof main side nav -->
+						</div>
+					</div>
+				</div>
+			</header>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+			<header class="page_header header_white">
 
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
+				<div class="widget widget_search">
+					<form method="get" class="searchform form-inline" action="https://html.modernwebtemplates.com/justice/">
+						<div class="form-group">
+							<label class="screen-reader-text" for="widget-search-header">Search for:</label>
+							<input id="widget-search-header" type="text" value="" name="search" class="form-control" placeholder="Search">
+						</div>
+						<button type="submit" class="theme_button">Search</button>
+					</form>
+				</div>
 
-        </ul>
-        <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+				<div class="pull-right big-header-buttons">
+					<ul class="inline-dropdown inline-block">
+						<li class="dropdown header-notes-dropdown">
+							<a class="header-button" id="header-messages" data-target="#" href="index.html" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+								<i class="fa fa-envelope grey"></i>
+								<span class="header-button-text">Inbox</span>
+								<span class="header-dropdown-number">
+									10
+								</span>
+							</a>
 
-            <!-- Main Content -->
-            <div id="content">
+							<div class="dropdown-menu" role="menu" aria-labelledby="header-messages">
+								<ul class="list1 no-bullets no-top-border no-bottom-border bottommargin_0">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+									<li>
+										<div class="media">
+											<div class="media-left">
+												<img src="images/team/01.jpg" alt="...">
+											</div>
+											<div class="media-body">
+												<h5 class="media-heading">
+													Alex Walker
+													<small>2 hours ago</small>
+												</h5>
+												<div class="one-line-text">
+													Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, corporis. Voluptatibus odio perspiciatis non quisquam provident, quasi eaque officia.
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="media">
+											<div class="media-left">
+												<img src="images/team/02.jpg" alt="...">
+											</div>
+											<div class="media-body">
+												<h5 class="media-heading">
+													Janet C. Donnalds
+													<small>5 hours ago</small>
+												</h5>
+												<div class="one-line-text">
+													Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="media">
+											<div class="media-left">
+												<img src="images/team/03.jpg" alt="...">
+											</div>
+											<div class="media-body">
+												<h5 class="media-heading">
+													Victoria Grow
+													<small>1 day ago</small>
+												</h5>
+												<div class="one-line-text">
+													Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="text-center darklinks">
+											<a href="admin_inbox.html">View All</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+						<li class="dropdown header-notes-dropdown">
+							<a class="header-button" id="header-notes" data-target="#" href="index.html" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+								<i class="fa fa-bell grey"></i>
+								<span class="header-button-text">Messages</span>
+								<span class="header-dropdown-number">
+									6
+								</span>
+							</a>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+							<div class="dropdown-menu" role="menu" aria-labelledby="header-notes">
+								<ul class="list1 no-bullets no-top-border no-bottom-border bottommargin_0">
+									<li>
+										<div class="media small-teaser">
+											<div class="media-left">
+												<div class="teaser_icon label-success round">
+													<i class="fa fa-shopping-cart"></i>
+												</div>
+											</div>
+											<div class="media-body">
+												<span class="grey">
+													New order
+												</span>
+												<small class="pull-right">2 minutes ago</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="media small-teaser">
+											<div class="media-left">
+												<div class="teaser_icon label-success round">
+													<i class="fa fa-user"></i>
+												</div>
+											</div>
+											<div class="media-body">
+												<span class="grey">
+													New user registered
+												</span>
+												<small class="pull-right">3 minutes ago</small>
+											</div>
+										</div>
+									</li>
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+									<li>
+										<div class="media small-teaser">
+											<div class="media-left">
+												<div class="teaser_icon label-danger round">
+													<i class="fa fa-bolt"></i>
+												</div>
+											</div>
+											<div class="media-body">
+												<span class="grey">
+													Server overloaded
+												</span>
+												<small class="pull-right">5 minutes ago</small>
+											</div>
+										</div>
+									</li>
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
+									<li>
+										<div class="media small-teaser">
+											<div class="media-left">
+												<div class="teaser_icon label-warning round">
+													<i class="fa fa-bell-o"></i>
+												</div>
+											</div>
+											<div class="media-body">
+												<span class="grey">
+													Long database query
+												</span>
+												<small class="pull-right">5 minutes ago</small>
+											</div>
+										</div>
+									</li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
+									<li>
+										<div class="media small-teaser">
+											<div class="media-left">
+												<div class="teaser_icon label-success round">
+													<i class="fa fa-user"></i>
+												</div>
+											</div>
+											<div class="media-body">
+												<span class="grey">
+													New user registered
+												</span>
+												<small class="pull-right">8 minutes ago</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="text-center darklinks">
+											<a href="#">View All</a>
+										</div>
+									</li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
+								</ul>
+							</div>
+						</li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+						<li class="dropdown user-dropdown-menu">
+							<a class="header-button" id="user-dropdown-menu" data-target="#" href="index.html" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+								<i class="fa fa-user grey"></i>
+								<span class="header-button-text">User</span>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="user-dropdown-menu">
+								<ul class="nav greylinks">
+									<li>
+										<a href="admin_profile.html">
+											<i class="fa fa-user"></i>
+											Profile
+										</a>
+									</li>
+									<li>
+										<a href="admin_profile_edit.html">
+											<i class="fa fa-edit"></i>
+											Edit Profile
+										</a>
+									</li>
+									<li>
+										<a href="admin_inbox.html">
+											<i class="fa fa-envelope-o"></i>
+											Inbox
+										</a>
+									</li>
+									<li>
+										<a href="logout">
+											<i class="fa fa-sign-out"></i>
+											Log Out
+										</a>
+									</li>
+								</ul>
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if(Session::has("LAWYER_LOGIN") || Session::has("ADMIN_LOGIN"))
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@yield('session')</span>
-                                <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
-                                @endif
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+							</div>
 
-                    </ul>
+						</li>
 
-                </nav>
-                <!-- End of Topbar -->
+						<li class="dropdown visible-xs-inline-block">
+							<a href="#" class="search_modal_button header-button">
+								<i class="fa fa-search grey"></i>
+								<span class="header-button-text">Search</span>
+							</a>
+						</li>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    @yield('lawyer')
-                    @yield('lawyersTable')
-                </div>
-                <!-- /.container-fluid -->
 
-            </div>
-            <!-- End of Main Content -->
+					</ul>
+				</div>
+				<!-- eof .header_right_buttons -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+			</header>
 
-        </div>
-        <!-- End of Content Wrapper -->
+			<section class="ls ms section_padding_top_50 section_padding_bottom_50 columns_padding_5">
+				<div class="container-fluid">
 
-    </div>
-    <!-- End of Page Wrapper -->
+					<div class="row with_background with_padding">
+						@yield('lawyer')
+						@yield('lawyersTable')
+					</div>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+				</div>
+				<!-- .container -->
+			</section>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Do You Really Want To Logout?</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+			<section class="ls">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12">
+							&copy; Copyrights 2017
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- eof #box_wrapper -->
+	</div>
+	<!-- eof #canvas -->
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
-     <!-- Lawyer Table Plugin -->
-     <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script src="../js/demo/chart-area-demo.js"></script>
-    <script src="../js/demo/chart-pie-demo.js"></script>
-    <script src="../js/demo/datatables-demo.js"></script>
-
+	<script src="../js/compressed.js"></script>
+	<script src="../js/vendor/Chart.bundle.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/admin-charts.js"></script>
+	<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="../js/demo/datatables-demo.js"></script>
 </body>
 
+
+<!-- Mirrored from html.modernwebtemplates.com/justice/admin_index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Nov 2022 20:53:32 GMT -->
 </html>
