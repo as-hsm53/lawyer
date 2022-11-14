@@ -96,7 +96,7 @@
 									<ul class="nav menu-side-click">
 										<li class="active">
 											<a href="#">
-												@yield('admin')
+												@yield('Qualification')
 											</a>
 											<ul>
 												<li>

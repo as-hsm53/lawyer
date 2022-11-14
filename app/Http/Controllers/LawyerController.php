@@ -34,7 +34,7 @@ class LawyerController extends Controller
             return view('Dashboard.Lawyer.home', compact('result','cities'));
         }
         else{
-            return redirect()->back()->with('error',"Sheeesh");
+            return redirect()->back()->with('error',"Unable To Establish a Connection at the moment. Please Try Again");
         }
 
     }

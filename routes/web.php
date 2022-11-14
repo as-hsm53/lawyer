@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Dashboard.layout');
-});
-
 
 Route::get('/register', [LawyerController::class, "show"]);
 
@@ -30,8 +26,8 @@ Route::get('LoggedIn',[LawyerController::class, "index"]);
 
 Route::get('login', [LawyerController::class, "view"]);
 
-Route::get('/main', function () {
-    return view('home.main');
+Route::get('/', function () {
+    return view('home.index');
 });
 
 Route::get('/index', function () {

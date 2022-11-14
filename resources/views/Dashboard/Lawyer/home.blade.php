@@ -7,6 +7,13 @@
 @endforeach
 @endsection
 <!-- lawyer name end -->
+<!-- lawyer Qualification Start -->
+@section('Qualification')
+@foreach($result as $r)
+{{$r->qualification}}
+@endforeach
+@endsection
+<!-- lawyer Qualification End -->
 <!-- lawyer image start -->
 @section('lawyerImage')
 @foreach($result as $r)
