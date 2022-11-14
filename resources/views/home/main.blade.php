@@ -103,13 +103,13 @@
 										<a href="index-2.html">Home</a>
 										<ul>
 											<li>
-												<a href="index-2.html">MultiPage</a>
+												<a href="#services">About</a>
 											</li>
 											<li>
-												<a href="index_singlepage.html">Single Page</a>
+												<a href="#team">Services</a>
 											</li>
 											<li>
-												<a href="admin_index.html">Admin Dashboard</a>
+												<a href="#lawyers">Lawyers</a>
 											</li>
 										</ul>
 									</li>

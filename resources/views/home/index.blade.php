@@ -460,7 +460,7 @@
 				</div>
 			</section>
 
-			<section class="cs section_padding_100 section_action parallax">
+			<section id="lawyers" class="cs section_padding_100 section_action parallax">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 text-center">
