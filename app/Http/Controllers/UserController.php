@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\user;
 use App\Models\cities;
+use App\Models\lawyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -20,11 +21,12 @@ class UserController extends Controller
     {
         
         $cities = cities::all();
+        $lawyers = lawyer::all();
         if($r->session()->has('USER_ID')){
             
             $result = DB::table('users')
             ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
-            return view('home.index', compact('result','cities'));
+            return view('home.index', compact('result','cities','lawyers'));
         }
         else{
             return view('home.index');

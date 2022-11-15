@@ -288,16 +288,16 @@
 							<p>
 
 								<div class="owl-carousel topmargin_60 bottommargin_0" data-nav="false" data-dots="false" data-responsive-lg="3" data-responsive-md="3">
-
+									@foreach($lawyers as $l)
 									<div class="vertical-item content-absolute content-hover text-center">
 										<div class="item-media">
-											<img src="images/team_rectangle/01.png" alt="" />
+											<img src="images/lawyers/{{$l->image}}" alt="" />
 										</div>
 										<div class="item-content ds">
 											<h6 class="muli text-uppercase inline-block rightmargin_5 bottommargin_0">
-												Phillip McDaniel
+												{{$l->firstName}} {{$l->lastName}}
 											</h6>
-											<span class="highlight">Business Lawyer</span>
+											<span class="highlight">{{$l->qualification}} Lawyer</span>
 											<div class="content-body">
 
 												<div class="divider_20">
@@ -307,7 +307,7 @@
 													<a class="social-icon theme-color-icon soc-google" href="#" title="" data-toggle="tooltip" data-original-title="Google"></a>
 												</div>
 												<p class="grey">
-													Pork chop sirloin kielbasa swine short ribs, t-bone pork belly. T-bone leberkas frankfurter.
+													{{$l->description}}
 												</p>
 												<p class="topmargin_30">
 													<a href="team-single.html" class="theme_button color1">Read more</a>
@@ -315,142 +315,7 @@
 											</div>
 										</div>
 									</div>
-
-									<div class="vertical-item content-absolute content-hover text-center">
-										<div class="item-media">
-											<img src="images/team_rectangle/02.png" alt="" />
-										</div>
-										<div class="item-content ds">
-											<h6 class="muli text-uppercase inline-block rightmargin_5 bottommargin_0">
-												Allen Floyd
-											</h6>
-											<span class="highlight">Criminal Lawyer</span>
-											<div class="content-body">
-
-												<div class="divider_20">
-													<a class="social-icon theme-color-icon soc-facebook" href="#" title="" data-toggle="tooltip" data-original-title="Facebook"></a>
-													<a class="social-icon theme-color-icon soc-twitter" href="#" title="" data-toggle="tooltip" data-original-title="Twitter"></a>
-													<a class="social-icon theme-color-icon soc-youtube" href="#" title="" data-toggle="tooltip" data-original-title="Youtube"></a>
-													<a class="social-icon theme-color-icon soc-google" href="#" title="" data-toggle="tooltip" data-original-title="Google"></a>
-												</div>
-												<p class="grey">
-													Pork chop sirloin kielbasa swine short ribs, t-bone pork belly. T-bone leberkas frankfurter.
-												</p>
-												<p class="topmargin_30">
-													<a href="team-single.html" class="theme_button color1">Read more</a>
-												</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="vertical-item content-absolute content-hover text-center">
-										<div class="item-media">
-											<img src="images/team_rectangle/03.png" alt="" />
-										</div>
-										<div class="item-content ds">
-											<h6 class="muli text-uppercase inline-block rightmargin_5 bottommargin_0">
-												John Fletcher
-											</h6>
-											<span class="highlight">Senior Attorney</span>
-											<div class="content-body">
-
-												<div class="divider_20">
-													<a class="social-icon theme-color-icon soc-facebook" href="#" title="" data-toggle="tooltip" data-original-title="Facebook"></a>
-													<a class="social-icon theme-color-icon soc-twitter" href="#" title="" data-toggle="tooltip" data-original-title="Twitter"></a>
-													<a class="social-icon theme-color-icon soc-youtube" href="#" title="" data-toggle="tooltip" data-original-title="Youtube"></a>
-													<a class="social-icon theme-color-icon soc-google" href="#" title="" data-toggle="tooltip" data-original-title="Google"></a>
-												</div>
-												<p class="grey">
-													Pork chop sirloin kielbasa swine short ribs, t-bone pork belly. T-bone leberkas frankfurter.
-												</p>
-												<p class="topmargin_30">
-													<a href="team-single.html" class="theme_button color1">Read more</a>
-												</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="vertical-item content-absolute content-hover text-center">
-										<div class="item-media">
-											<img src="images/team_rectangle/04.png" alt="" />
-										</div>
-										<div class="item-content ds">
-											<h6 class="muli text-uppercase inline-block rightmargin_5 bottommargin_0">
-												Christian Roberson
-											</h6>
-											<span class="highlight">Financial Lawyer</span>
-											<div class="content-body">
-
-												<div class="divider_20">
-													<a class="social-icon theme-color-icon soc-facebook" href="#" title="" data-toggle="tooltip" data-original-title="Facebook"></a>
-													<a class="social-icon theme-color-icon soc-twitter" href="#" title="" data-toggle="tooltip" data-original-title="Twitter"></a>
-													<a class="social-icon theme-color-icon soc-youtube" href="#" title="" data-toggle="tooltip" data-original-title="Youtube"></a>
-													<a class="social-icon theme-color-icon soc-google" href="#" title="" data-toggle="tooltip" data-original-title="Google"></a>
-												</div>
-												<p class="grey">
-													Pork chop sirloin kielbasa swine short ribs, t-bone pork belly. T-bone leberkas frankfurter.
-												</p>
-												<p class="topmargin_30">
-													<a href="team-single.html" class="theme_button color1">Read more</a>
-												</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="vertical-item content-absolute content-hover text-center">
-										<div class="item-media">
-											<img src="images/team_rectangle/05.png" alt="" />
-										</div>
-										<div class="item-content ds">
-											<h6 class="muli text-uppercase inline-block rightmargin_5 bottommargin_0">
-												Don Aguilar
-											</h6>
-											<span class="highlight">Family Lawyer</span>
-											<div class="content-body">
-
-												<div class="divider_20">
-													<a class="social-icon theme-color-icon soc-facebook" href="#" title="" data-toggle="tooltip" data-original-title="Facebook"></a>
-													<a class="social-icon theme-color-icon soc-twitter" href="#" title="" data-toggle="tooltip" data-original-title="Twitter"></a>
-													<a class="social-icon theme-color-icon soc-youtube" href="#" title="" data-toggle="tooltip" data-original-title="Youtube"></a>
-													<a class="social-icon theme-color-icon soc-google" href="#" title="" data-toggle="tooltip" data-original-title="Google"></a>
-												</div>
-												<p class="grey">
-													Pork chop sirloin kielbasa swine short ribs, t-bone pork belly. T-bone leberkas frankfurter.
-												</p>
-												<p class="topmargin_30">
-													<a href="team-single.html" class="theme_button color1">Read more</a>
-												</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="vertical-item content-absolute content-hover text-center">
-										<div class="item-media">
-											<img src="images/team_rectangle/06.png" alt="" />
-										</div>
-										<div class="item-content ds">
-											<h6 class="muli text-uppercase inline-block rightmargin_5 bottommargin_0">
-												Dennis Greer
-											</h6>
-											<span class="highlight">Civil Lawyer</span>
-											<div class="content-body">
-
-												<div class="divider_20">
-													<a class="social-icon theme-color-icon soc-facebook" href="#" title="" data-toggle="tooltip" data-original-title="Facebook"></a>
-													<a class="social-icon theme-color-icon soc-twitter" href="#" title="" data-toggle="tooltip" data-original-title="Twitter"></a>
-													<a class="social-icon theme-color-icon soc-youtube" href="#" title="" data-toggle="tooltip" data-original-title="Youtube"></a>
-													<a class="social-icon theme-color-icon soc-google" href="#" title="" data-toggle="tooltip" data-original-title="Google"></a>
-												</div>
-												<p class="grey">
-													Pork chop sirloin kielbasa swine short ribs, t-bone pork belly. T-bone leberkas frankfurter.
-												</p>
-												<p class="topmargin_30">
-													<a href="team-single.html" class="theme_button color1">Read more</a>
-												</p>
-											</div>
-										</div>
-									</div>
-
+									@endforeach
 								</div>
 						</div>
 					</div>
