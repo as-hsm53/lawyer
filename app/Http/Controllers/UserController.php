@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\user;
+use App\Models\cities;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -22,9 +24,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register()
     {
-        //
+        $cities = cities::all();
+
+        return view('home.register', compact('cities'));
     }
 
     /**
@@ -33,9 +37,65 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $validate = Validator::make($r->all(),[
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'cityId' => 'required|not_in:0',
+            'address' => 'required',
+        ]);
+        if($validate->fails()){
+            return back()->withInput()->withErrors($validate);
+        }
+        else{
+            $user = new user();
+            $user->firstName = $r->firstName;
+            $user->lastName = $r->lastName;
+            $user->cityId = $r->cityId;
+            $user->address = $r->address;
+            $user->email = $r->email;
+            $user->password = $r->password;
+    
+            $user->save();
+    
+            return redirect('/home/login')->with("message","Successfully Registered! Please Login.");
+        }
+    }
+
+    public function login(Request $r){
+        
+        $validate = Validator::make($r->all(),[
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        
+        if($validate->fails()){
+            return redirect('login')->withInput()->withErrors($validate);
+            
+        }
+        else {
+            
+            
+            $email = $r->post('email');
+            $password = $r->post('password');
+            // If data from lawyer table, go to lawyer dashboard
+            $user = user::where(['email' => $email, 'password' => $password])->get();
+            
+            if(isset($user['0']->id)){
+                
+                $r->session()->put('USER_LOGIN', true);
+                $r->session()->put('USER_ID', $user['0']->id);
+                
+                session()->flash('success', "You've Been Logged In Successfully!");
+                return redirect('/');
+            }
+            else{
+                return redirect('/home/login')->with('error','Invalid Credentials');
+            }
+        }
     }
 
     /**
@@ -44,9 +104,9 @@ class UserController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(user $user)
+    public function show()
     {
-        //
+        return view("/home/login");
     }
 
     /**

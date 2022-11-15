@@ -4,9 +4,7 @@
 @section('index')
 	<div id="canvas">
 		<div id="box_wrapper">
-
 			<!-- template sections -->
-
 			<section class="intro_section page_mainslider ds">
 				<div class="flexslider" data-nav="false">
 					<ul class="slides">

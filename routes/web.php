@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LawyerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/home/login', [UserController::class, "show"]);
 
+Route::get('/home/register', [UserController::class, "register"]);
+
+Route::post('/home/registered', [UserController::class, "store"]);
+
+Route::post('/home/auth', [UserController::class, "login"]);
 
 Route::get('/register', [LawyerController::class, "show"]);
 
