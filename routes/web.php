@@ -19,6 +19,10 @@ Route::get('/home/login', [UserController::class, "show"]);
 
 Route::get('/home/register', [UserController::class, "register"]);
 
+Route::get('/', [UserController::class, "index"]);
+
+Route::get('/home/logout', [UserController::class, "logout"]);
+
 Route::post('/home/registered', [UserController::class, "store"]);
 
 Route::post('/home/auth', [UserController::class, "login"]);
@@ -33,9 +37,6 @@ Route::get('LoggedIn',[LawyerController::class, "index"]);
 
 Route::get('login', [LawyerController::class, "view"]);
 
-Route::get('/', function () {
-    return view('home.index');
-});
 
 Route::get('/index', function () {
     return view('home.index');

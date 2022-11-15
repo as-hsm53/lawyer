@@ -116,21 +116,26 @@
 
 									<!-- contacts -->
 									<li>
-										<a href="contact.html">login</a>
+										@if(session("USER_ID"))
+										@foreach($result as $r)
+										<a href="/home/login">{{$r->firstName}} {{$r->lastName}}</a>
 										<ul>
 											<li>
-												<a href="contact.html">Contact 1</a>
-											</li>
-											<li>
-												<a href="contact2.html">Contact 2</a>
-											</li>
-											<li>
-												<a href="contact3.html">Contact 3</a>
-											</li>
-											<li>
-												<a href="contact4.html">Contact 4</a>
+												<a href="/home/logout">Logout</a>
 											</li>
 										</ul>
+										@endforeach
+										@else
+										<a href="/home/login">login</a>
+										<ul>
+											<li>
+												<a href="/home/login">Login</a>
+											</li>
+											<li>
+												<a href="/home/register">Register</a>
+											</li>
+										</ul>
+										@endif
 									</li>
 									<!-- eof contacts -->
 								</ul>

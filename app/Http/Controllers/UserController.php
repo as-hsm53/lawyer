@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\user;
 use App\Models\cities;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -14,9 +16,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $r)
     {
-        //
+        
+        $cities = cities::all();
+        if($r->session()->has('USER_ID')){
+            
+            $result = DB::table('users')
+            ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
+            return view('home.index', compact('result','cities'));
+        }
+        else{
+            return view('home.index');
+        }
     }
 
     /**
@@ -138,8 +150,10 @@ class UserController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user $user)
+    public function logout()
     {
-        //
+        Session::flush();
+
+        return redirect()->back()->with('message', "You've Logged Out Succesfully");
     }
 }
