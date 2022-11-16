@@ -29,7 +29,7 @@ class UserController extends Controller
             return view('home.index', compact('result','cities','lawyers'));
         }
         else{
-            return view('home.index');
+            return view('home.index', compact('lawyers'));
         }
     }
 
