@@ -131,11 +131,11 @@ class UserController extends Controller
      */
     public function attorneys()
     {
-        $attorneys = lawyer::all();
         $result = DB::table('lawyers')
             ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
-            ->select('lawyers.*', 'cities.city')->get();
-        return view('home.attorneys', compact('attorneys'));
+            ->select('lawyers.*', 'cities.city')
+            ->where("lawyers.status", "=", "Active")->get();
+        return view('home.attorneys', compact('result'));
     }
 
     /**

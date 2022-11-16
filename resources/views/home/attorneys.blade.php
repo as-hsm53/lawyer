@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2>Attorneys</h2>
-                <ol class="breadcrumb">
+                <!-- <ol class="breadcrumb">
                     <li>
                         <a href="index.html">
                             Home
@@ -16,7 +16,7 @@
                         <a href="#">Pages</a>
                     </li>
                     <li class="active">Attorneys</li>
-                </ol>
+                </ol> -->
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
 <section class="ls ms section_padding_top_100 section_padding_bottom_50 columns_margin_bottom_60">
     <div class="container">
         <div class="row">
-        @foreach($attorneys as $a)    
+        @foreach($result as $a)    
             <div class="col-md-4 col-sm-2">
                 <div class="vertical-item content-absolute content-hover text-center">
                     <div class="item-media">
@@ -36,6 +36,7 @@
                             {{$a->firstName}} {{$a->lastName}}
                         </h6>
                         <span class="highlight">{{$a->qualification}} Lawyer</span>
+                        <br>
                         <span class="highlight">{{$a->city}}</span>
                         <div class="content-body">
 
