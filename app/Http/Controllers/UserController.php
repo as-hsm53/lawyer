@@ -129,9 +129,13 @@ class UserController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(user $user)
+    public function attorneys()
     {
-        //
+        $attorneys = lawyer::all();
+        $result = DB::table('lawyers')
+            ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+            ->select('lawyers.*', 'cities.city')->get();
+        return view('home.attorneys', compact('attorneys'));
     }
 
     /**

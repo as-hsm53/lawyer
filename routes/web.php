@@ -21,6 +21,8 @@ Route::get('/home/register', [UserController::class, "register"]);
 
 Route::get('/', [UserController::class, "index"]);
 
+Route::get('home/attorneys', [UserController::class, "attorneys"]);
+
 Route::get('/home/logout', [UserController::class, "logout"]);
 
 Route::post('/home/registered', [UserController::class, "store"]);

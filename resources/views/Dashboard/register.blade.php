@@ -118,6 +118,8 @@
 														<option value="Civil">Civil Law</option>
 														<option value="Business">Business Law</option>
 														<option value="Criminal">Criminal Law</option>
+														<option value="Personal">Personal Law</option>
+														<option value="Drug Offence">Drug Offense</option>
 													</select>
 													@if ($errors->has('qualification'))
 														<span class="text-danger"><b>{{ $errors->first('qualification') }}</b></span>

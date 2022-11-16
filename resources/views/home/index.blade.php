@@ -2,6 +2,9 @@
 
 
 @section('index')
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
 	<div id="canvas">
 		<div id="box_wrapper">
 			<!-- template sections -->
@@ -201,7 +204,7 @@
 								</div>
 								<div class="media-body toppadding_5">
 									<h3 class="muli">
-										<a href="service-single.html">Real Estate Law</a>
+										<a href="service-single.html">Civil Law</a>
 									</h3>
 									<hr class="divider_30_3 divider_left divider_10 main_bg_color">
 									<p>Pork chop sirloin kielbasa swine short ribs, t-bone pork belly. T-bone leberkas frankfurter.</p>
@@ -217,7 +220,7 @@
 								</div>
 								<div class="media-body toppadding_5">
 									<h3 class="muli">
-										<a href="service-single.html">Financial Law</a>
+										<a href="service-single.html">Business Law</a>
 									</h3>
 									<hr class="divider_30_3 divider_left divider_10 main_bg_color">
 									<p>Chicken short loin t-bone, kielbasa pancetta salami hamburger chuck sirloin pork. belly.</p>

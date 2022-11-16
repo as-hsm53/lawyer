@@ -37,11 +37,6 @@
 	<!--[if lt IE 9]>
 		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
 	<![endif]-->
-
-	<div class="preloader">
-		<div class="preloader_image"></div>
-	</div>
-
 	<!-- search modal -->
 	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal">
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -100,20 +95,11 @@
 							<nav class="mainmenu_wrapper">
 								<ul class="mainmenu nav sf-menu">
 									<li class="active">
-										<a href="index-2.html">Home</a>
-										<ul>
-											<li>
-												<a href="#services">About</a>
-											</li>
-											<li>
-												<a href="#team">Services</a>
-											</li>
-											<li>
-												<a href="#lawyers">Lawyers</a>
-											</li>
-										</ul>
+										<a href="/">Home</a>
 									</li>
-
+									<li>
+										<a href="/home/attorneys">Attorneys</a>
+									</li>
 									<!-- contacts -->
 									<li>
 										@if(session("USER_ID"))
@@ -130,9 +116,25 @@
 										<ul>
 											<li>
 												<a href="/home/login">Login</a>
+												<ul>
+													<li>
+														<a href="login">Lawyer</a>
+													</li>
+													<li>
+														<a href="/home/login">Client</a>
+													</li>
+												</ul>
 											</li>
 											<li>
-												<a href="/home/register">Register</a>
+												<a href="">Register</a>
+												<ul>
+													<li>
+														<a href="register">Register as Lawyer</a>
+													</li>
+													<li>
+														<a href="/home/register">Register as Client</a>
+													</li>
+												</ul>
 											</li>
 										</ul>
 										@endif
@@ -147,7 +149,7 @@
 			</header>
 
 			@yield('index')
-
+			@yield('attorneys')
 			<footer class="page_footer ds section_padding_top_65 section_padding_bottom_50 columns_padding_25">
 				<div class="container">
 
