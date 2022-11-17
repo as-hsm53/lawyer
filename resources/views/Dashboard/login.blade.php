@@ -79,15 +79,7 @@
                                     <div class="col-lg-12">
                                         <div class=" alert alert-success">{{session("message")}}</div>
                                     </div>
-                                @endif
-                                <!-- @if ($errors->any())
-                                    <div class="col-lg-12">
-                                        @foreach ($errors->all() as $error)
-                                            <div class="alert alert-danger">{{ $error }}</div>
-                                        @endforeach
-                                    </div>
-                                @endif -->
-                                @if(Session::has("error"))
+                                @elseif(Session::has("error"))
                                     <div class="col-lg-12">
                                         <div class=" alert alert-danger">{{session("error")}}</div>
                                     </div>

@@ -33,9 +33,24 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        if($r->session()->has('USER_ID')){
+            $booking = new booking();
+            $booking->lawyerId = $r->lawyerId;
+            $booking->bookDate = $r->bookDate;
+            $booking->bookTimeStart = $r->bookTimeStart;
+            $booking->bookTimeEnd = $r->bookTimeEnd;
+            $booking->description = $r->description;
+            $booking->cityId = $r->cityId;
+            $booking->userId = $r->session()->get('USER_ID');
+
+            $booking->save();
+            return redirect()->back()->with("message", "Your Booking Has Been Successfully Requested, Please Await Confirmation");
+        }
+        else{
+            return redirect('/home/login')->with("error", "You Need to Login First");
+        }
     }
 
     /**

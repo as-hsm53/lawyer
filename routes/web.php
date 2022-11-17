@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\LawyerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 // User Routes For Hiring and rotuing to different pages START
 Route::get('/home/login', [UserController::class, "show"]);
+
+Route::post('/home/booking', [BookingController::class, "store"]);
 
 Route::get('/home/register', [UserController::class, "register"]);
 

@@ -1,6 +1,7 @@
 @extends('home.main');
 
 @section('lawyerPage')
+
 @foreach($data as $d)
 <section class="page_breadcrumbs cs parallax section_padding_top_40 section_padding_bottom_40">
     <div class="container">
@@ -26,6 +27,11 @@
 <section class="ls ms section_padding_top_100 section_padding_bottom_100 columns_padding_25">
     <div class="container">
         <div class="row">
+        @if(Session::has("message"))
+            <div class="col-lg-12">
+                <div class=" alert alert-success">{{session("message")}}</div>
+            </div>
+        @endif
             <div class="col-md-5">
                 <div class="vertical-item content-absolute text-center">
                     <div class="item-media">
@@ -45,63 +51,67 @@
                     {{$d->description}}
                 </p>
 
-                <div class="header_darkgrey" style="padding: 5rem; border-radius: 10px;">
-                    <form method="post" action="https://html.modernwebtemplates.com/justice/">
+                <div class="ds header_darkgrey" style="padding: 5rem; border-radius: 10px;">
+                    <h2 class="section_header highlight">Hire Me</h2>
+                        <p>Please choose your preferred timings from below to hire me.</p>
+                    <form method="post" action="booking">
+                        @csrf
                         <div class="row columns_margin_bottom_30">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="first-name" class="sr-only">First Name
+                                    <label for="bookDate" class="sr-only">Booking Date
                                         <span class="required">*</span>
                                     </label>
-                                    <input type="text" aria-required="true" size="30" value="" name="first-name" id="first-name" class="form-control" placeholder="First Name">
+                                    <input type="date" aria-required="true" size="30" value="" name="bookDate" id="bookDate" class="form-control" placeholder="Choose Date">
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="bookTime" class="sr-only">Booking Time
+                                        <span class="required">*</span>
+                                    </label>
+                                    <input type="time" aria-required="true" size="30" value="" name="bookTime" id="bookTime" class="form-control" placeholder="Choose Time">
+                                </div>
+                            </div> -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <select name="bookTimeStart"  class="form-select form-select form-control" aria-label=".form-select example">
+                                        <option value="0" selected>Select Start Time</option>
+                                        <option value="11:00">11:00 AM</option>
+                                        <option value="13:00">1:00 PM</option>
+                                        <option value="15:00">3:00 PM</option>
+                                        <option value="17:00">5:00 PM</option>
+                                    </select>
+                                    <!-- @if ($errors->has('qualification'))
+                                        <span class="text-danger"><b>{{ $errors->first('qualification') }}</b></span>
+                                    @endif -->
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="last-name" class="sr-only">Last Name
-                                        <span class="required">*</span>
-                                    </label>
-                                    <input type="text" aria-required="true" size="30" value="" name="last-name" id="last-name" class="form-control" placeholder="Last Name">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="email" class="sr-only">Your E-Mail</label>
-                                    <input type="text" size="30" value="" name="email" id="email" class="form-control" placeholder="Your E-Mail">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="phone" class="sr-only">Phone Number
-                                        <span class="required">*</span>
-                                    </label>
-                                    <input type="text" aria-required="true" size="30" value="" name="phone" id="phone" class="form-control" placeholder="Your Phone">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group select-group">
-                                    <label for="phone" class="sr-only">Practice Area
-                                        <span class="required">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select aria-required="true" id="month" name="mounth" class="choice empty form-control">
-                                            <option value="" disabled selected data-default>Practice Area</option>
-                                            <option value="january">January</option>
-                                            <option value="february">February</option>
-                                            <option value="march">March</option>
-                                        </select>
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                    </div>
+                                    <select name="bookTimeEnd"  class="form-select form-select form-control" aria-label=".form-select example">
+                                        <option value="0" selected>Select End Time</option>
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="14:00">2:00 PM</option>
+                                        <option value="16:00">4:00 PM</option>
+                                        <option value="18:00">6:00 PM</option>
+                                    </select>
+                                    <!-- @if ($errors->has('qualification'))
+                                        <span class="text-danger"><b>{{ $errors->first('qualification') }}</b></span>
+                                    @endif -->
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="comment" class="sr-only">Your Message</label>
-                                    <textarea rows="1" cols="45" name="comment" id="comment" class="form-control" placeholder="Your Message"></textarea>
+                                    <label for="description" class="sr-only">Your Message</label>
+                                    <textarea rows="1" cols="45" name="description" id="description" class="form-control" placeholder="Your Message"></textarea>
                                 </div>
                             </div>
                         </div>
                         <p class="form-submit">
+                            <input type="hidden" value="{{$d->cityId}}" name="cityId" id="cityId">
+                            <input type="hidden" value="{{$d->id}}" name="lawyerId" id="lawyerId">
+                            
                             <button type="submit" id="submit" name="submit" class="theme_button color1">Send request</button>
                         </p>
                     </form>

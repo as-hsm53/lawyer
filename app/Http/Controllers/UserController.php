@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\booking;
 use App\Models\user;
 use App\Models\cities;
 use App\Models\lawyer;
@@ -87,12 +88,10 @@ class UserController extends Controller
         ]);
         
         if($validate->fails()){
-            return redirect('login')->withInput()->withErrors($validate);
+            return redirect('/home/login')->withInput()->withErrors($validate);
             
         }
         else {
-            
-            
             $email = $r->post('email');
             $password = $r->post('password');
             // If data from lawyer table, go to lawyer dashboard
@@ -168,9 +167,13 @@ class UserController extends Controller
         ->select('lawyers.*', 'cities.city')
         ->where("lawyers.id", "=", $id)->get();
 
-        return view('home.lawyer', compact('data'));
+        $user = DB::table('users')
+        ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
+
+        return view('home.lawyer', compact('data','user'));
     }
 
+    
     /**
      * Remove the specified resource from storage.
      *

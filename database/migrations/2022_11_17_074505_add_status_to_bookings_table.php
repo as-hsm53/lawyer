@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
-            $table->id();
-            $table->string("userId");
-            $table->string("lawyerId");
-            $table->date("bookDate");
-            $table->time("bookTime");
-            $table->bigInteger("cityId");
-            $table->timestamps();
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->string('status')->default('Deactive')->after('description');
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::table('bookings', function (Blueprint $table) {
+            //
+        });
     }
 };
