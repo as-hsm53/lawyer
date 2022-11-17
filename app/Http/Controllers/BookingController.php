@@ -76,7 +76,14 @@ class BookingController extends Controller
             return view('home.bookings', compact('result','user'));
         }
         else{
+            $result = DB::table('bookings as b')
+            ->join('users as u', 'b.userId', "=" ,'u.id')
+            ->join('lawyers as l', 'b.lawyerId', "=" ,'l.id')
+            ->join('cities as c', 'b.cityId', "=" ,'c.id')
+            ->select('u.firstName as userFName','u.lastName as userLName','l.firstName as lawyerFName',
+            'l.lastName as lawyerLName', 'b.*', 'c.city', 'c.state')->get();
 
+            return view('home.bookings', compact('result'));
         }
         // return view('home.bookings');
     }

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <h2>Current Bookings</h2>
+                <h2>Bookings</h2>
             </div>
         </div>
     </div>
