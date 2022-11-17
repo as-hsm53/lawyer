@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\admin;
 use App\Models\booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -94,9 +95,17 @@ class BookingController extends Controller
      * @param  \App\Models\booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function edit(booking $booking)
+    public function Bookings()
     {
-        //
+        $admins = admin::all();
+        $result = DB::table('bookings as b')
+        ->join('users as u', 'b.userId', "=" ,'u.id')
+        ->join('lawyers as l', 'b.lawyerId', "=" ,'l.id')
+        ->join('cities as c', 'b.cityId', "=" ,'c.id')
+        ->select('u.firstName as userFName','u.lastName as userLName','l.firstName as lawyerFName',
+        'l.lastName as lawyerLName', 'l.qualification', 'b.*', 'c.city', 'c.state')->get();
+
+        return view('admin.bookings', compact('result','admins'));
     }
 
     /**

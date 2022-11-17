@@ -81,6 +81,8 @@ Route::group(['middleware'=>'lawyer'], function(){
 Route::group(['middleware'=>'admin'], function(){
     
     Route::get('admin/Dashboard', [AdminController::class, "Dashboard"] );
+    Route::get('admin/Clients', [UserController::class, "dashboard"] );
+    Route::get('admin/Bookings', [BookingController::class, "Bookings"] );
     Route::Post('admin/Active', [AdminController::class, "Active"] );
     Route::Post('admin/Deactive', [AdminController::class, "Deactive"] );
     Route::get('admin/logout', [AdminController::class, "logout"]);

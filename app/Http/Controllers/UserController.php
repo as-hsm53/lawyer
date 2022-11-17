@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\booking;
 use App\Models\user;
+use App\Models\admin;
 use App\Models\cities;
 use App\Models\lawyer;
+use App\Models\booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -173,7 +174,13 @@ class UserController extends Controller
         return view('home.lawyer', compact('data','user'));
     }
 
-    
+    public function dashboard(){
+        $admins = admin::all();
+        $result = DB::table('users')
+        ->join('cities', 'users.cityId', "=" ,'cities.id')
+        ->select('users.*', 'cities.city')->get();
+        return view('admin.clients', compact('result', 'admins'));
+    }
     /**
      * Remove the specified resource from storage.
      *

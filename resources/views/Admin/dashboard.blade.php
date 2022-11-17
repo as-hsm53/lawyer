@@ -3,9 +3,9 @@
 @foreach($admins as $admin)
 Hussain
 @endforeach
+@endsection
 @section('admin')
 Super Admin
-@endsection
 @endsection
 @section('lawyersTable')
 @if(session()->has('success'))

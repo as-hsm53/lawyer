@@ -36,6 +36,7 @@
                                 <th>City</th>
                                 <th>State</th>
                                 <th>Description</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,11 @@
                                 <td>{{$r->city}}</td>
                                 <td>{{$r->state}}</td>
                                 <td>{{$r->description}}</td>
+                                @if($r->status == "Deactive")
+                                <td><p class="btn btn-danger"> Pending</p></td>
+                                @else
+                                <td><p class="btn btn-success"> Scheduled</p></td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
