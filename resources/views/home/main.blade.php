@@ -100,7 +100,9 @@
 									<li>
 										<a href="/home/attorneys">Attorneys</a>
 									</li>
-									<!-- contacts -->
+									<li>
+										<a href="/home/bookings">Bookings</a>
+									</li>
 									<li>
 										@if(session("USER_ID"))
 										@foreach($user as $r)
@@ -151,6 +153,7 @@
 			@yield('index')
 			@yield('attorneys')
 			@yield('lawyerPage')
+			@yield('bookings')
 			<footer class="page_footer ds section_padding_top_65 section_padding_bottom_50 columns_padding_25">
 				<div class="container">
 

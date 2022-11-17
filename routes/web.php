@@ -22,6 +22,8 @@ Route::get('/home/login', [UserController::class, "show"]);
 
 Route::post('/home/booking', [BookingController::class, "store"]);
 
+Route::get('/home/bookings', [BookingController::class, "show"]);
+
 Route::get('/home/register', [UserController::class, "register"]);
 
 Route::get('/', [UserController::class, "index"]);

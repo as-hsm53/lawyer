@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -59,9 +60,25 @@ class BookingController extends Controller
      * @param  \App\Models\booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(booking $booking)
+    public function show(Request $r)
     {
-        //
+        if($r->session()->has('USER_ID')){
+            $result = DB::table('bookings as b')
+            ->join('users as u', 'b.userId', "=" ,'u.id')
+            ->join('lawyers as l', 'b.lawyerId', "=" ,'l.id')
+            ->join('cities as c', 'b.cityId', "=" ,'c.id')
+            ->select('u.firstName as userFName','u.lastName as userLName','l.firstName as lawyerFName',
+            'l.lastName as lawyerLName', 'b.*', 'c.city', 'c.state')->get();
+
+            $user = DB::table('users')
+            ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
+
+            return view('home.bookings', compact('result','user'));
+        }
+        else{
+
+        }
+        // return view('home.bookings');
     }
 
     /**
