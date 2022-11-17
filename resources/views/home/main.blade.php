@@ -79,7 +79,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<a href="index.html" class="logo small">
-								<img src="images/logo.png" alt="">
+								<img src="../images/logo.png" alt="">
 								<span class="logo_text">
 									<span class="playfair title">The Justice</span>
 									<span class="highlight">Premium HTML template</span>
@@ -103,8 +103,8 @@
 									<!-- contacts -->
 									<li>
 										@if(session("USER_ID"))
-										@foreach($result as $r)
-										<a href="/home/login">{{$r->firstName}} {{$r->lastName}}</a>
+										@foreach($user as $r)
+										<a href="">{{$r->firstName}} {{$r->lastName}}</a>
 										<ul>
 											<li>
 												<a href="/home/logout">Logout</a>
@@ -112,10 +112,10 @@
 										</ul>
 										@endforeach
 										@else
-										<a href="/home/login">login</a>
+										<a href="">login</a>
 										<ul>
 											<li>
-												<a href="/home/login">Login</a>
+												<a href="">Login</a>
 												<ul>
 													<li>
 														<a href="login">Lawyer</a>
@@ -150,6 +150,7 @@
 
 			@yield('index')
 			@yield('attorneys')
+			@yield('lawyerPage')
 			<footer class="page_footer ds section_padding_top_65 section_padding_bottom_50 columns_padding_25">
 				<div class="container">
 
@@ -158,7 +159,7 @@
 						<div class="col-md-4 col-sm-6">
 
 							<a href="index.html" class="logo bottommargin_10">
-								<img src="images/logo.png" alt="">
+								<img src="../images/logo.png" alt="">
 								<span class="logo_text">
 									<span class="playfair title">The Justice</span>
 									<span class="highlight">Premium HTML template</span>

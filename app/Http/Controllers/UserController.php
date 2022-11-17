@@ -24,9 +24,9 @@ class UserController extends Controller
         $lawyers = lawyer::all();
         if($r->session()->has('USER_ID')){
             
-            $result = DB::table('users')
+            $user = DB::table('users')
             ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
-            return view('home.index', compact('result','cities','lawyers'));
+            return view('home.index', compact('user','cities','lawyers'));
         }
         else{
             return view('home.index', compact('lawyers'));
@@ -129,13 +129,28 @@ class UserController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function attorneys()
+    public function attorneys(Request $r)
     {
-        $result = DB::table('lawyers')
+        if($r->session()->has('USER_ID')){
+            
+            $result = DB::table('lawyers')
             ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
             ->select('lawyers.*', 'cities.city')
             ->where("lawyers.status", "=", "Active")->get();
-        return view('home.attorneys', compact('result'));
+
+            $user = DB::table('users')
+            ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
+            return view('home.attorneys', compact('result','user'));
+        }
+        else{
+            $result = DB::table('lawyers')
+            ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+            ->select('lawyers.*', 'cities.city')
+            ->where("lawyers.status", "=", "Active")->get();
+
+            return view('home.attorneys', compact('result'));
+        }
+        
     }
 
     /**
@@ -145,9 +160,15 @@ class UserController extends Controller
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user $user)
+    public function lawyerPage(Request $r, $id)
     {
-        //
+        $lawyer = lawyer::find($id);
+        $data = DB::table('lawyers')
+        ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+        ->select('lawyers.*', 'cities.city')
+        ->where("lawyers.id", "=", $id)->get();
+
+        return view('home.lawyer', compact('data'));
     }
 
     /**

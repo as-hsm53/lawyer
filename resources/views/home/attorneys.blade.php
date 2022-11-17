@@ -29,7 +29,7 @@
             <div class="col-md-4 col-sm-2">
                 <div class="vertical-item content-absolute content-hover text-center">
                     <div class="item-media">
-                        <img src="../images/lawyers/{{$a->image}}" alt="Lawyer Image" />
+                        <img src="../images/lawyers/{{$a->image}}" alt="Lawyer Image" style="height: 85%;" />
                     </div>
                     <div class="item-content ds">
                         <h6 class="muli text-uppercase inline-block rightmargin_5 bottommargin_0">
@@ -50,7 +50,7 @@
                                 {{$a->description}}
                             </p>
                             <p class="topmargin_30">
-                                <a href="team-single.html" class="theme_button color1">Read more</a>
+                                <a href="/home/lawyer{{$a->id}}" class="theme_button color1">Read more</a>
                             </p>
                         </div>
                     </div>

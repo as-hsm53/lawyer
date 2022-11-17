@@ -313,7 +313,7 @@
 													{{$l->description}}
 												</p>
 												<p class="topmargin_30">
-													<a href="team-single.html" class="theme_button color1">Read more</a>
+													<a href="/home/attorneys" class="theme_button color1">See More</a>
 												</p>
 											</div>
 										</div>
