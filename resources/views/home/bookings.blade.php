@@ -52,8 +52,10 @@
                                 <td>{{$r->description}}</td>
                                 @if($r->status == "Deactive")
                                 <td><p class="btn btn-danger"> Pending</p></td>
+                                @elseif($r->status == "Approved")
+                                <td><p class="btn btn-warning">{{$r->status}}</p></td>
                                 @else
-                                <td><p class="btn btn-success"> Scheduled</p></td>
+                                <td><p class="btn btn-success">{{$r->status}}</p></td>
                                 @endif
                             </tr>
                             @endforeach
