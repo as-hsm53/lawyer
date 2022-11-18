@@ -9,32 +9,19 @@ use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $r)
     {
         if($r->session()->has('USER_ID')){
@@ -55,12 +42,7 @@ class BookingController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\booking  $booking
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Request $r)
     {
         if($r->session()->has('USER_ID')){
@@ -86,15 +68,9 @@ class BookingController extends Controller
 
             return view('home.bookings', compact('result'));
         }
-        // return view('home.bookings');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\booking  $booking
-     * @return \Illuminate\Http\Response
-     */
+   
     public function Bookings()
     {
         $admins = admin::all();
@@ -108,24 +84,59 @@ class BookingController extends Controller
         return view('admin.bookings', compact('result','admins'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\booking  $booking
-     * @return \Illuminate\Http\Response
-     */
+    public function Lawyer(Request $r)
+    {
+        $data = DB::table('bookings as b')
+        ->join('users as u', 'b.userId', "=" ,'u.id')
+        ->join('lawyers as l', 'b.lawyerId', "=" ,'l.id')
+        ->join('cities as c', 'b.cityId', "=" ,'c.id')
+        ->select('u.firstName as userFName','u.lastName as userLName','u.email as userEmail','l.firstName as lawyerFName',
+        'l.lastName as lawyerLName', 'l.qualification', 'b.*', 'c.city', 'c.state')
+        ->where('l.id', '=', $r->session()->get('LAWYER_ID'))->get();
+
+        $result = DB::table('lawyers')
+        ->select('lawyers.*')
+        ->where("lawyers.id" ,"=",$r->session()->get('LAWYER_ID'))->get();
+
+        return view('Dashboard.Lawyer.bookings', compact('result','data'));
+        // return view('admin.bookings', compact('result','admins'));
+
+    }
+
+    public function Approved(Request $r){
+        $id = $r->post('id');
+        booking::where(['id'=> $id])->update(['status'=>'Approved']);
+        
+        session()->flash('success', "Booking Has Been Approved!");
+        return redirect('admin/Bookings');
+    }
+    public function LawyerApproved(Request $r){
+        $id = $r->post('id');
+        booking::where(['id'=> $id])->update(['status'=>'Approved']);
+        
+        session()->flash('success', "Booking Has Been Switched to Approved!");
+        return redirect('Bookings');
+    }
+    public function Pending(Request $r){
+        $id = $r->post('id');
+        booking::where(['id'=> $id])->update(['status'=>'Deactive']);
+        
+        session()->flash('success', "Booking Has Been Switched To Pending!");
+        return redirect('admin/Bookings');
+    }
+    public function Scheduled(Request $r){
+        $id = $r->post('id');
+        booking::where(['id'=> $id])->update(['status'=>'Scheduled']);
+        
+        session()->flash('success', "Booking Has Been Scheduled!");
+        return redirect('Bookings');
+    }
     public function update(Request $request, booking $booking)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\booking  $booking
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(booking $booking)
     {
         //

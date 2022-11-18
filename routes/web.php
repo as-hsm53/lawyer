@@ -71,6 +71,9 @@ Route::get('/aboutUs', function () {
 Route::group(['middleware'=>'lawyer'], function(){
     
     Route::get('Dashboard', [LawyerController::class, "Dashboard"] );
+    Route::get('Bookings', [BookingController::class, "Lawyer"] );
+    Route::post('Scheduled', [BookingController::class, "Scheduled"] );
+    Route::post('Approved', [BookingController::class, "LawyerApproved"] );
     Route::get('logout', [LawyerController::class, "logout"]);
     Route::post('updated', [LawyerController::class, "update"]);
 
@@ -83,8 +86,10 @@ Route::group(['middleware'=>'admin'], function(){
     Route::get('admin/Dashboard', [AdminController::class, "Dashboard"] );
     Route::get('admin/Clients', [UserController::class, "dashboard"] );
     Route::get('admin/Bookings', [BookingController::class, "Bookings"] );
-    Route::Post('admin/Active', [AdminController::class, "Active"] );
-    Route::Post('admin/Deactive', [AdminController::class, "Deactive"] );
+    Route::post('admin/Active', [AdminController::class, "Active"] );
+    Route::post('admin/Approved', [BookingController::class, "Approved"] );  
+    Route::post('admin/Pending', [BookingController::class, "Pending"] );  
+    Route::post('admin/Deactive', [AdminController::class, "Deactive"] );
     Route::get('admin/logout', [AdminController::class, "logout"]);
 });
 

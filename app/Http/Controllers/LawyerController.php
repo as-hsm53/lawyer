@@ -12,15 +12,12 @@ use Illuminate\Support\Facades\Validator;
 
 class LawyerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function view()
     {
         return view('Dashboard.login');
     }
+    
     //Dashboard input tags function
     public function Dashboard(Request $r){
 
@@ -38,11 +35,6 @@ class LawyerController extends Controller
         }
 
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('Dashboard.Lawyer.home');
@@ -51,13 +43,7 @@ class LawyerController extends Controller
     public function home(){
         return view('home.index');
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
+    
     // registering lawyer With input validation
     public function store(Request $r)
     {
@@ -133,37 +119,16 @@ class LawyerController extends Controller
             }
         }
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\lawyer  $lawyer
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show()
     {
         $cities = cities::all();
 
         return view('Dashboard.register', compact('cities'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\lawyer  $lawyer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(lawyer $lawyer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\lawyer  $lawyer
-     * @return \Illuminate\Http\Response
-     */
+    
+    
+    
     public function update(Request $r, lawyer $lawyer)
     {
         $lawyer = lawyer::find(1);
@@ -198,13 +163,7 @@ class LawyerController extends Controller
         return redirect('Dashboard');
         
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\lawyer  $lawyer
-     * @return \Illuminate\Http\Response
-     */
+    
     public function logout()
     {
         Session::flush();

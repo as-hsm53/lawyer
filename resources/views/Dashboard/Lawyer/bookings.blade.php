@@ -1,13 +1,29 @@
 @extends('Dashboard.Lawyer.layout')
+<!-- lawyer name start -->
 @section('session')
-@foreach($admins as $admin)
-Hussain
+@foreach($result as $r)
+{{$r->firstName}}
+{{$r->lastName}}
 @endforeach
-@section('admin')
-Super Admin
 @endsection
+<!-- lawyer name end -->
+<!-- lawyer Qualification Start -->
+@section('Qualification')
+@foreach($result as $r)
+{{$r->qualification}}
+@endforeach
 @endsection
-@section('bookings')
+<!-- lawyer Qualification End -->
+<!-- lawyer image start -->
+@section('lawyerImage')
+@foreach($result as $r)
+<div class="user-menu-media">
+  <img src="../images/lawyers/{{$r->image}}"  alt="">						
+</div>
+@endforeach
+@endsection
+
+@section('booking')
 @if(session()->has('success'))
 <div class="col-lg-12">
     <div class=" alert alert-success">{{session("success")}}</div>
@@ -24,8 +40,8 @@ Super Admin
                     <tr>
                         <th>ID</th>
                         <th>Client</th>
-                        <th>Lawyer</th>
-                        <th>Consaltance</th>
+                        <th>Email</th>
+                        <th>Description</th>
                         <th>Date</th>
                         <th>Timings</th>
                         <th>City</th>
@@ -37,8 +53,8 @@ Super Admin
                     <tr>
                         <th>ID</th>
                         <th>Client</th>
-                        <th>Lawyer</th>
-                        <th>Consaltance</th>
+                        <th>Email</th>
+                        <th>Description</th>
                         <th>Date</th>
                         <th>Timings</th>
                         <th>City</th>
@@ -47,30 +63,30 @@ Super Admin
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach($result as $r)
+                    @foreach($data as $d)
                     <tr>
-                        <td>{{$r->id}}</td>
-                        <td>{{$r->userFName}} {{$r->userLName}}</td>
-                        <td>{{$r->lawyerFName}} {{$r->lawyerLName}}</td>
-                        <td>{{$r->qualification}}</td>
-                        <td>{{$r->bookDate}}</td>
-                        <td>{{$r->bookTimeStart}} - {{$r->bookTimeEnd}}</td>
-                        <td>{{$r->city}}</td>
-                        <td>{{$r->state}}</td>
-                        @if($r->status == "Deactive")
+                        <td>{{$d->id}}</td>
+                        <td>{{$d->userFName}} {{$d->userLName}}</td>
+                        <td>{{$d->userEmail}}</td>
+                        <td>{{$d->description}}</td>
+                        <td>{{$d->bookDate}}</td>
+                        <td>{{$d->bookTimeStart}} - {{$d->bookTimeEnd}}</td>
+                        <td>{{$d->city}}</td>
+                        <td>{{$d->state}}</td>
+                        @if($d->status == "Scheduled")
                         <td>
                             <form action="Approved" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{$r->id}}">
-                                <button type="submit"  class="btn btn-danger">Pending</button>
+                                <input type="hidden" name="id" value="{{$d->id}}">
+                                <button type="submit"  class="btn btn-success">{{$d->status}}</button>
                             </form>
                         </td>
-                        @elseif($r->status == "Approved")
+                        @elseif($d->status == "Approved")
                         <td>
-                            <form action="Pending" method="POST">
+                            <form action="Scheduled" method="POST">
                                 @csrf
-                                <input type="hidden" name="id" value="{{$r->id}}">
-                                <button type="submit"  class="btn btn-warning">{{$r->status}}</button>
+                                <input type="hidden" name="id" value="{{$d->id}}">
+                                <button type="submit"  class="btn btn-warning">{{$d->status}}</button>
                             </form>
                         </td>
                         @else
