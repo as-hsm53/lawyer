@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index(Request $r)
     {
         
@@ -35,11 +31,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function register()
     {
         $cities = cities::all();
@@ -47,12 +38,7 @@ class UserController extends Controller
         return view('home.register', compact('cities'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $r)
     {
         $validate = Validator::make($r->all(),[
@@ -112,27 +98,18 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\user  $user
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show()
     {
         return view("/home/login");
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\user  $user
-     * @return \Illuminate\Http\Response
-     */
+    
     public function attorneys(Request $r)
     {
         if($r->session()->has('USER_ID')){
             
+            $cities = cities::all();
             $result = DB::table('lawyers')
             ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
             ->select('lawyers.*', 'cities.city')
@@ -140,26 +117,66 @@ class UserController extends Controller
 
             $user = DB::table('users')
             ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
-            return view('home.attorneys', compact('result','user'));
+            return view('home.attorneys', compact('result','user','cities'));
         }
         else{
+            $cities = cities::all();
             $result = DB::table('lawyers')
             ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
             ->select('lawyers.*', 'cities.city')
             ->where("lawyers.status", "=", "Active")->get();
 
-            return view('home.attorneys', compact('result'));
+            return view('home.attorneys', compact('result','cities'));
         }
         
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\user  $user
-     * @return \Illuminate\Http\Response
-     */
+    public function filter(Request $r){
+        
+        $cityId = $r->cityId;
+        $qualification = $r->qualification;
+        $cities = cities::all();
+        // $data = DB::table('lawyers')
+        // ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+        // ->select('lawyers.*', 'cities.city')
+        // ->where("lawyers.status","Active")->get();
+
+        if($r->has('cityId')){
+            if($cityId != "0"){
+                $result = DB::table('lawyers')
+                ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+                ->select('lawyers.*', 'cities.city')
+                ->where("lawyers.status", "Active")
+                ->where("lawyers.cityId", $cityId)->get();
+            }
+            if($r->has('qualification')){
+                if($qualification != "0"){
+                    $result = DB::table('lawyers')
+                    ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+                    ->select('lawyers.*', 'cities.city')
+                    ->where("lawyers.status", "Active")
+                    ->where("lawyers.cityId", $cityId)
+                    ->where("lawyers.qualification", $qualification)->get();
+                }
+            }
+        }
+        if($r->has('qualification')){
+            if($qualification != "0"){
+                $result = DB::table('lawyers')
+                ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+                ->select('lawyers.*', 'cities.city')
+                ->where("lawyers.status", "Active")
+                ->where("lawyers.qualification", $qualification)->get();
+            }
+        }
+        $user = DB::table('users')
+        ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
+
+        return view('home.attorneys', compact('result','user','cities'));
+
+        // return $lawyer->get();
+    }
+
     public function lawyerPage(Request $r, $id)
     {
         $lawyer = lawyer::find($id);

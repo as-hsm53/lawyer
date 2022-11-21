@@ -24,6 +24,40 @@
 
 <section class="ls ms section_padding_top_100 section_padding_bottom_50 columns_margin_bottom_60">
     <div class="container">
+        <h4>Filter Lawyers</h4>
+        <form class="row" method="post" action="filter">
+            @csrf
+            <div class="col-md-4 col-sm-2">
+                <div class="form-group has-placeholder">
+                    <label for="cityId">Filter By City</label>
+                    <i class="grey fa fa-map-marker"></i>
+                    <select name="cityId" class="form-select form-select form-control" aria-label=".form-select example">
+                        <option value="0" selected>Filter By City</option>
+                        @foreach($cities as $c)
+                        <option value="{{$c->id}}">{{$c->city}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-2">
+                <div class="form-group has-placeholder">
+                    <label for="qualification">Filter By Practice</label>
+                    <i class="grey fa fa-graduation-cap"></i>
+                    <select name="qualification"  class="form-select form-select form-control" aria-label=".form-select example">
+                        <option value="0" selected>Filter By Practice</option>
+                        <option value="Family">Family law</option>
+                        <option value="Civil">Civil Law</option>
+                        <option value="Business">Business Law</option>
+                        <option value="Criminal">Criminal Law</option>
+                        <option value="Personal">Personal Law</option>
+                        <option value="Drug Offence">Drug Offense</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-2">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Filter</button>
+            </div>
+        </form>
         <div class="row">
         @foreach($result as $a)    
             <div class="col-md-4 col-sm-2">
