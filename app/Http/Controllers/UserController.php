@@ -137,33 +137,27 @@ class UserController extends Controller
         $qualification = $r->qualification;
         $cities = cities::all();
 
-        if($r->has('cityId')){
-            if($cityId != "0"){
-                $result = DB::table('lawyers')
-                ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
-                ->select('lawyers.*', 'cities.city')
-                ->where("lawyers.status", "Active")
-                ->where("lawyers.cityId", $cityId)->get();
-            }
-            if($r->has('qualification')){
-                if($qualification != "0"){
-                    $result = DB::table('lawyers')
-                    ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
-                    ->select('lawyers.*', 'cities.city')
-                    ->where("lawyers.status", "Active")
-                    ->where("lawyers.cityId", $cityId)
-                    ->where("lawyers.qualification", $qualification)->get();
-                }
-            }
-        }
-        elseif($r->has('qualification')){
+        if($cityId != "0"){
+            $result = DB::table('lawyers')
+            ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+            ->select('lawyers.*', 'cities.city')
+            ->where("lawyers.status", "Active")
+            ->where("lawyers.cityId", $cityId)->get();
             if($qualification != "0"){
                 $result = DB::table('lawyers')
                 ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
                 ->select('lawyers.*', 'cities.city')
                 ->where("lawyers.status", "Active")
+                ->where("lawyers.cityId", $cityId)
                 ->where("lawyers.qualification", $qualification)->get();
             }
+        }
+        else if($qualification != "0"){
+            $result = DB::table('lawyers')
+            ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+            ->select('lawyers.*', 'cities.city')
+            ->where("lawyers.status", "Active")
+            ->where("lawyers.qualification", $qualification)->get();
         }
         $user = DB::table('users')
         ->where("id" ,"=",$r->session()->get('USER_ID'))->get();

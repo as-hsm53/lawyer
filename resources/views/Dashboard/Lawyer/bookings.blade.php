@@ -91,7 +91,7 @@
                         </td>
                         @else
                         <td>
-                            <button type="submit"  class="btn btn-warning">Scheduled</button>
+                            <button type="submit"  class="btn btn-danger">Pending</button>
                         </td>
                         @endif
                     </tr>

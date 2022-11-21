@@ -75,7 +75,7 @@ Super Admin
                         </td>
                         @else
                         <td>
-                            <button type="submit"  class="btn btn-warning">Scheduled</button>
+                            <button type="submit"  class="btn btn-success">Scheduled</button>
                         </td>
                         @endif
                     </tr>
