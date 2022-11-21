@@ -55,9 +55,15 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-2">
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Filter</button>
+                <button type="submit" class="btn btn-primary"  style="width: 100%;">Filter</button>
             </div>
         </form>
+            <form class="row" action="showAll" method="post" style="display:flex; justify-content:center;">
+                @csrf
+                <div class="col-md-4 col-sm-2">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Show All</button>
+                </div>
+            </form>
         <div class="row">
         @foreach($result as $a)    
             <div class="col-md-4 col-sm-2">

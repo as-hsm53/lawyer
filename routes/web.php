@@ -34,6 +34,8 @@ Route::get('home/attorneys', [UserController::class, "attorneys"]);
 
 Route::post('home/filter', [UserController::class, "filter"]);
 
+Route::post('home/showAll', [UserController::class, "showAll"]);
+
 Route::get('/home/logout', [UserController::class, "logout"]);
 
 Route::post('/home/registered', [UserController::class, "store"]);
@@ -96,4 +98,3 @@ Route::group(['middleware'=>'admin'], function(){
 });
 
 // Super Admin Middleware Routes END
-

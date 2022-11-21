@@ -136,10 +136,6 @@ class UserController extends Controller
         $cityId = $r->cityId;
         $qualification = $r->qualification;
         $cities = cities::all();
-        // $data = DB::table('lawyers')
-        // ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
-        // ->select('lawyers.*', 'cities.city')
-        // ->where("lawyers.status","Active")->get();
 
         if($r->has('cityId')){
             if($cityId != "0"){
@@ -160,7 +156,7 @@ class UserController extends Controller
                 }
             }
         }
-        if($r->has('qualification')){
+        elseif($r->has('qualification')){
             if($qualification != "0"){
                 $result = DB::table('lawyers')
                 ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
@@ -173,8 +169,19 @@ class UserController extends Controller
         ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
 
         return view('home.attorneys', compact('result','user','cities'));
+        
+    }
 
-        // return $lawyer->get();
+    public function showAll(Request $r){
+        $cities = cities::all();
+        $result = DB::table('lawyers')
+        ->join('cities', 'lawyers.cityId', "=" ,'cities.id')
+        ->select('lawyers.*', 'cities.city')
+        ->where("lawyers.status", "=", "Active")->get();
+
+        $user = DB::table('users')
+        ->where("id" ,"=",$r->session()->get('USER_ID'))->get();
+        return view('home.attorneys', compact('result','user','cities'));
     }
 
     public function lawyerPage(Request $r, $id)
