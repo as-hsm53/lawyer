@@ -200,7 +200,7 @@
 										<i class="fa fa-envelope highlight fontsize_18"></i>
 									</div>
 									<div class="media-body greylinks underlined-links">
-										<a href="https://html.modernwebtemplates.com/cdn-cgi/l/email-protection#f1889e8483b19c90989ddf929e9c"><span class="__cf_email__" data-cfemail="6f1c1a1f1f001d1b2f1b070a051a1c1b060c0a410c0002">[email&#160;protected]</span></a>
+										<a href="mailto:hussainkhozema110@gmail.com"><span class="__cf_email__" data-cfemail="6f1c1a1f1f001d1b2f1b070a051a1c1b060c0a410c0002">hussainkhozema110@gmail.com</span></a>
 									</div>
 								</div>
 								<div class="media small-teaser">
@@ -208,7 +208,7 @@
 										<i class="fa fa-phone highlight fontsize_18"></i>
 									</div>
 									<div class="media-body">
-										718-250-4467
+										<a href="tel:+923112535653">+92 311 2535653</a>
 									</div>
 								</div>
 								<div class="media small-teaser">

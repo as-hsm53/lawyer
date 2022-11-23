@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use App\Models\cities;
+use Illuminate\Support\Facades\Mail;
 use App\Models\lawyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -170,4 +171,44 @@ class LawyerController extends Controller
 
         return redirect('login')->with('message', "You've Logged Out Succesfully");
     }
+    // booking form code //
+    public function bookingPost(Request $r){
+
+        
+        // email function??
+        if($this->isonline()){
+            $email_data=[
+
+                'recipient' => $r->userEmail,
+                'fromemail' => $r->lawyerEmail,
+                'fromnumber'=> $r->number,
+                'fromname' => $r->lawyerName,
+                'subject' => $r->subject,
+                'Message' => $r->Message
+            ];
+            Mail::send('Dashboard.lawyer.Emailtemplate',$email_data,function($message) use ($email_data){
+                $message->to($email_data['recipient'])
+                ->from($email_data['fromemail'],$email_data['fromnumber'],$email_data['fromname'])
+                ->subject($email_data['subject']);
+            });
+            return redirect()->back()->with('success', 'Your Message has been sent');
+
+        }
+        else{
+            return redirect()->back()->with('error', 'An error occured check your credientials');
+
+
+        }
+
+        
+    }
+    public function isonline($site = "https://youtube.com/"){
+
+        if(@fopen($site,"r")){
+            return true;
+                }
+                else{
+                    return false;}
+    // endfunction of contact///
+}
 }

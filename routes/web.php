@@ -80,6 +80,7 @@ Route::group(['middleware'=>'lawyer'], function(){
     Route::post('Approved', [BookingController::class, "LawyerApproved"] );
     Route::get('logout', [LawyerController::class, "logout"]);
     Route::post('updated', [LawyerController::class, "update"]);
+    Route::Post('sendemail',[LawyerController::class,"bookingPost"]);
 
 });
 // Lawyer Routes for viewing dashboard materials END
